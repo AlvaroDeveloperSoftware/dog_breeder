@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Dog Breeder') }}</title>
 
+    <link rel="icon" href="{{ url('assets/logoDogBreeder.PNG') }}">
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
