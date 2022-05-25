@@ -1,6 +1,28 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>Login</title>
+
+    <link rel="icon" href="{{ url('assets/logoDogBreeder.PNG') }}">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body style="background-color: #d0bbbb">
+   
 <div class="container">
     <h1 class="text-center" style="margin-top: 11px;color: #4f4f4f;">Iniciar Sesión</h1><!-- Start: Login Form Basic -->
     <section class="position-relative py-4 py-xl-5">
@@ -8,7 +30,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-xl-4">
                     <div class="card mb-5">
-                        <div class="card-body shadow-lg d-flex flex-column align-items-center" style="color: var(--bs-blue);background: #91686d;">
+                        <div class="card-body shadow-lg d-flex flex-column align-items-center" style="color: var(--bs-blue);background: #ad8f92;">
                             <form class="text-center" method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="mb-3"></div>
@@ -54,5 +76,8 @@
             </div>
         </div>
     </section>
-    </div>  
-@endsection
+    </div>
+    </div>
+</body>
+</html>
+  
