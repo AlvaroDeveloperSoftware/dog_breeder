@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginController extends Controller
+class UserBreedController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Login Controller
+    | UserBreed Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
@@ -35,7 +35,15 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('auth:breeder')->except('logout');
+    }
+
+    //protected $loginView = 'breeder.login';
+    protected $guard = 'breeders';
+
+    public function authenticated ()
+    {
+         return redirect('breeder/home');
     }
 
     public function logout () {
@@ -43,20 +51,5 @@ class LoginController extends Controller
         auth()->logout();
         // redirect to homepage
         return redirect('/login');
-    }
-
-    public function authenticate(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-        if ($request->get('type') == 'users_breeder') {
-            if (Auth::guard('users_breeder')->attempt($credentials)) {
-                 return redirect()->to('home');
-            }
-        } else {
-            if (Auth::attempt($credentials)) {
-                return redirect()->to('login');
-            }
-        }
-        return redirect()->to(route('login'));
     }
 }

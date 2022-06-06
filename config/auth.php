@@ -40,7 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-    ],
+        'users_breeder' => [
+            'driver' => 'session',
+            'provider' => 'user_breed',
+        ],
+],
 
     /*
     |--------------------------------------------------------------------------
@@ -65,10 +69,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'user_breed' => [
+             'driver' => 'eloquent',
+             'model' => App\Models\UserBreedController::class,
+         ],
     ],
 
     /*

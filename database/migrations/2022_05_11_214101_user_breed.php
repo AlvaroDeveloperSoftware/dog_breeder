@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('photo', 500)->nullable();
             $table->string('affix', 50);
             $table->string('phone', 9 );
-            $table->string('password', 20);
+            $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
