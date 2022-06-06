@@ -40,7 +40,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'users_breeder' => [
+        'user_breed' => [
             'driver' => 'session',
             'provider' => 'user_breed',
         ],
@@ -93,6 +93,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+            'timeout' => 60,
+        ],
+        'user_breed' => [
+            'provider' => 'user_breed',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

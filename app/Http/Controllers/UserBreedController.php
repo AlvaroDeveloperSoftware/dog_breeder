@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserBreedController extends Controller
 {
@@ -26,7 +28,7 @@ class UserBreedController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/home/breeder';
 
     /**
      * Create a new controller instance.
@@ -35,21 +37,11 @@ class UserBreedController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:breeder')->except('logout');
+        $this->middleware('auth')->except('logout');
     }
 
-    //protected $loginView = 'breeder.login';
-    protected $guard = 'breeders';
-
-    public function authenticated ()
+    public function index () 
     {
-         return redirect('breeder/home');
-    }
-
-    public function logout () {
-        //logout user
-        auth()->logout();
-        // redirect to homepage
-        return redirect('/login');
+        return view('breeder_home');
     }
 }

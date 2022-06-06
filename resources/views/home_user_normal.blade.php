@@ -172,9 +172,6 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#">CONFIGURACION</a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">MI CRIADERO</a>
-                                            </li>
                                         </ul>
                                         <a class="nav-link" href="#"></a>
                                     </li>
@@ -264,10 +261,6 @@
             <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center position-absolute mb-3 bs-icon lg" style="top: -30px;">
   
 </div>
-<h4 class="card-title">Mi Criadero</h4>
-<p class="card-text">Crea y modifica los ejemplares pertenecientes a tu criadero.</p>
-</div>
-<div class="card-footer p-4 py-3"><a href="#">Ir a Mi Criadero</a>
 </div>
 </div>
 </div>

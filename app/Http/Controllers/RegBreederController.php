@@ -26,15 +26,12 @@ class RegBreederController extends Controller
     */
 
     use RegistersUsers;
-
-    protected $registerView = 'registerbreeder';
-    protected $guard = 'breeders';
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = 'breeder.home';
 
     /**
      * Create a new controller instance.
@@ -43,7 +40,7 @@ class RegBreederController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('user_breed');
     }
 
     /**
@@ -93,10 +90,6 @@ class RegBreederController extends Controller
         $userBreeder->password = Hash::make($request->input('password'));
 
         $userBreeder->save();
-
-        return redirect("home")->with("success", "Registro realizado");
-
-
     }
 
     public function updateUser(){

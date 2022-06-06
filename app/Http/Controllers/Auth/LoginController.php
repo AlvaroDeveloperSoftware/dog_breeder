@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -45,18 +46,21 @@ class LoginController extends Controller
         return redirect('/login');
     }
 
-    public function authenticate(Request $request)
+    public function authenticate()
     {
-        $credentials = $request->only('email', 'password');
-        if ($request->get('type') == 'users_breeder') {
-            if (Auth::guard('users_breeder')->attempt($credentials)) {
-                 return redirect()->to('home');
-            }
+        if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password])) {
+            $details = Auth::guard('user')->user();
+            $user = $details['original'];
+            return $user;
         } else {
-            if (Auth::attempt($credentials)) {
-                return redirect()->to('login');
-            }
+            return 'auth fail';
         }
-        return redirect()->to(route('login'));
+        if (Auth::guard('user_breed')->attempt(['email' => $email, 'password' => $password])) {
+            $details = Auth::guard('user_breed')->user();
+            $user = $details['original'];
+            return $user;
+        } else {
+            return 'auth fail';
+        }
     }
 }
