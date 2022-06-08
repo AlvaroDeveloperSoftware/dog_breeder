@@ -66,7 +66,7 @@ class LoginController extends Controller
     // Attempt to log the customer in
     if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('home'));
+        return redirect()->intended(route('admin.home'));
     } //attempt to log the seller in
     if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
