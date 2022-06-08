@@ -2,27 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 
 class UserAdminController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | UserBreed Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
+ 
     /**
      * Where to redirect users after login.
      *
@@ -37,7 +24,7 @@ class UserAdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('logout');
+        $this->middleware('auth:admin')->except('logout');
     }
 
     public function index () 

@@ -36,12 +36,9 @@ Auth::routes();
 
 
 Route::prefix('admin')->group(function() {
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.post'); 
-    Route::get('/home', '\App\Http\Controllers\HomeAdminController@index')->name('admin.home');
-    Route::get('/logout', function(){
-        Auth::logout();
-        return Redirect::to('login');
+    Route::get('/login', 'Auth\AdminLoginController@loginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.post');
+    Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
      });
     //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     //  Route::get('/farm', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
@@ -54,7 +51,6 @@ Route::prefix('admin')->group(function() {
     //  Route::get('/home', '\App\Http\Controllers\HomeBreederController@index');
     //  Route::get('/show', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     //  Route::delete('/farm/{id}', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-    });
 
     Route::post('/register', '\App\Http\Controllers\Auth\RegisterController@create')->name('create.breeder');
     Route::get('/registerView', '\App\Http\Controllers\Auth\RegisterController@index')->name('register.breeder');
