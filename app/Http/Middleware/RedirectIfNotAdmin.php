@@ -22,7 +22,7 @@ class RedirectIfAdmin
         if(!auth()->guard($guard)->check()) {
             return $next($request);
         }
-        return redirect(route('admin.home'));
+        return redirect(route('admin.login'));
 
     }
 }

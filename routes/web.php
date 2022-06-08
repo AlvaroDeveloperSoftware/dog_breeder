@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 Route::get('/', function () {
-    return view('auth/login');
+    return view('/auth/login');
 });
 
 Auth::routes();
@@ -32,10 +32,14 @@ Auth::routes();
 
 //Route::get('/login', '\App\Http\Controllers\Auth\LoginController@login')->name('login');
 //Rutas admin
-Route::get('/home', '\App\Http\Controllers\HomeAdminController@index')->name('admin.home');
 
-Route::group(['middleware'=>['auth:admin'], 'prefix' => 'admin'], function() {
-     Route::get('/logout', function(){
+
+
+Route::prefix('admin')->group(function() {
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.post'); 
+    Route::get('/home', '\App\Http\Controllers\HomeAdminController@index')->name('admin.home');
+    Route::get('/logout', function(){
         Auth::logout();
         return Redirect::to('login');
      });
@@ -56,12 +60,12 @@ Route::group(['middleware'=>['auth:admin'], 'prefix' => 'admin'], function() {
     Route::get('/registerView', '\App\Http\Controllers\Auth\RegisterController@index')->name('register.breeder');
 
 //Rutas criador
-Route::group(['middleware'=>['auth:user'], 'prefix' => 'breeder'], function() {
+Route::prefix('breeder')->group(function() {
     Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('breeder.home');
 
     Route::get('/logout', function(){
         Auth::logout();
-        return Redirect::to('login');
+        return Redirect::to('/login');
      });
     //     //  Route::get('/config', '\App\Http\Controllers\HomeBreederController@index');
     //    //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
