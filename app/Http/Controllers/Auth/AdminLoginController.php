@@ -5,8 +5,6 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Route;
 
-
-
 class AdminLoginController extends Controller
 {
 
@@ -27,10 +25,10 @@ class AdminLoginController extends Controller
 
     }
 
-    // public function guard()
-    // {
-    //  return Auth::guard('admin');
-    // }
+     public function guard()
+     {
+      return Auth::guard('admin');
+    }
 
     public function loginForm()
     {
@@ -49,12 +47,12 @@ class AdminLoginController extends Controller
        // Validate the form data
        $this->validate($request, [
         'email'   => 'required|email',
-        'password' => 'required|min:6'
+        'password' => 'required'
       ]);
       // Attempt to log the user in
       if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('admin.home'));
+        return redirect('admin.home');
       } 
       // if unsuccessful, then redirect back to the login with the form data
       return redirect()->back()->withInput($request->only('email', 'remember'));

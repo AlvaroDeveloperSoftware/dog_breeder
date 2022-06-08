@@ -17,6 +17,8 @@ class Admin extends Authenticatable
 
 
     protected $table = 'admin';
+
+    protected $guard = 'admin';
     /**
      * The attributes that are mass assignable.
      *
