@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
-use Route;
 
 class AdminLoginController extends Controller
 {
@@ -25,11 +24,6 @@ class AdminLoginController extends Controller
 
     }
 
-     public function guard()
-     {
-      return Auth::guard('admin');
-    }
-
     public function loginForm()
     {
         return view('auth.login_admin');
@@ -39,7 +33,7 @@ class AdminLoginController extends Controller
     {
         Auth::guard('admin')->logout();
 
-        return redirect('admin.login');
+        return redirect('/');
     }
 
      public function login(Request $request)

@@ -45,7 +45,7 @@ class Handler extends ExceptionHandler
            break;
        }
 
-        return redirect()->guest(route($login));
+        return redirect()->user(route($login));
     }
     /**
      * A list of the inputs that are never flashed for validation exceptions.
