@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'user',
         'passwords' => 'users',
     ],
 
@@ -36,13 +36,13 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'user' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'user_breed' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'user_breed',
+            'provider' => 'admins',
         ],
 ],
 
@@ -68,10 +68,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-         'user_breed' => [
+         'admins' => [
              'driver' => 'eloquent',
-             'model' => App\Models\UserBreedController::class,
+             'model' => App\Models\Admin::class,
          ],
     ],
 
@@ -98,8 +97,8 @@ return [
             'throttle' => 60,
             'timeout' => 60,
         ],
-        'user_breed' => [
-            'provider' => 'user_breed',
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

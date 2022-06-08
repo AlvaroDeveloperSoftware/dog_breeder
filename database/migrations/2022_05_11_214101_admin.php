@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_normal_dog', function(Blueprint $table){
-            $table->integer('user_normal_id')->unsigned();
-            $table->foreign('user_normal_id')->references('id')->on('user_normal');
-            $table->integer('id_dog')->unsigned();
-            $table->foreign('id_dog')->references('id')->on('dog');
+        Schema::create('admin', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('email', 200)->unique();
+            $table->string('name', 30);
+            $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_normal_dog');
+        Schema::dropIfExists('admin');
     }
 };

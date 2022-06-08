@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('date_start');
             $table->date('date_end');
             $table->integer('id_admin')->unsigned();
-            $table->foreign('id_admin')->references('id')->on('users');
+            $table->foreign('id_admin')->references('id')->on('admin');
         });
     }
 

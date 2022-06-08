@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('owner_dog', function(Blueprint $table){
             $table->integer('id_owner')->unsigned();
-            $table->foreign('id_owner')->references('id')->on('owner');
+            $table->foreign('id_owner')->references('id')->on('owner')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('id_dog')->unsigned();
-            $table->foreign('id_dog')->references('id')->on('dog');
+            $table->foreign('id_dog')->references('id')->on('dog')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

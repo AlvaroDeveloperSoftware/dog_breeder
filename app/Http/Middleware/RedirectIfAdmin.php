@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 
 
-class RedirectIfBreeder
+class RedirectIfAdmin
 {
         /**
      * Handle an incoming request.
@@ -17,12 +17,12 @@ class RedirectIfBreeder
      * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle($request, Closure $next, $guard="user_breed")
+    public function handle($request, Closure $next, $guard="admin")
     {
         if(!auth()->guard($guard)->check()) {
             return $next($request);
         }
-        return redirect(route('home.breeder'));
+        return redirect(route('admin.home'));
 
     }
 }

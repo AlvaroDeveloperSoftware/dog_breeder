@@ -6,6 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
+use App\Http\Models\Admin;
+use App\Http\Models\User;
+
+
 
 class LoginController extends Controller
 {
@@ -28,7 +34,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
+    
     /**
      * Create a new controller instance.
      *
@@ -36,31 +42,42 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('user')->except('logout');
+
     }
 
-    public function logout () {
-        //logout user
-        auth()->logout();
-        // redirect to homepage
-        return redirect('/login');
-    }
-
-    public function authenticate()
+    public function logout(Request $request)
     {
-        if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password])) {
-            $details = Auth::guard('user')->user();
-            $user = $details['original'];
-            return $user;
-        } else {
-            return 'auth fail';
-        }
-        if (Auth::guard('user_breed')->attempt(['email' => $email, 'password' => $password])) {
-            $details = Auth::guard('user_breed')->user();
-            $user = $details['original'];
-            return $user;
-        } else {
-            return 'auth fail';
-        }
+    $this->guard()->logout();
+
+    $request->session()->invalidate();
+
+    return $this->loggedOut($request) ?: redirect('/login');
     }
+
+    public function login(Request $request)
+{
+    // Validate the form data
+    $validator = $this->validate($request, [
+    'email'   => 'required|email',
+    'password' => 'required|string'
+  ]);
+
+    // Attempt to log the customer in
+    if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        // if successful, then redirect to their intended location
+        return redirect()->intended(route('home'));
+    } //attempt to log the seller in
+    if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        // if successful, then redirect to their intended location
+        return redirect()->intended(route('breeder.home'));
+    }
+
+    // if Auth::attempt fails (wrong credentials) create a new message bag instance.
+    $errors = new MessageBag(['password' => ['Email o contraseña incorrectos']]);
+    // redirect back to the login page, using ->withErrors($errors) you send the error created above
+    return redirect()->back()->withErrors($errors)->withInput($request->only('email', 'password'));
+}
+    
+
 }

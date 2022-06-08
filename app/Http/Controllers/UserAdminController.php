@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
 
-class UserBreedController extends Controller
+class UserAdminController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ class UserBreedController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home/breeder';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -42,6 +42,6 @@ class UserBreedController extends Controller
 
     public function index () 
     {
-        return view('breeder_home');
+        return view('admin_home');
     }
 }

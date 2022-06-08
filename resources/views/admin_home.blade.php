@@ -169,12 +169,6 @@
                                             <li class="nav-item">
                                                 <a class="nav-link active" href="#">INICIO</a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">CONFIGURACION</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">MI CRIADERO</a>
-                                            </li>
                                         </ul>
                                         <a class="nav-link" href="#"></a>
                                     </li>
@@ -182,7 +176,7 @@
                                         <a class="nav-link" href="#">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">CULTURA</a>
+                                        <a class="nav-link" href="#">USUARIOS</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">EXPOSICIONES</a>
@@ -287,7 +281,7 @@
 </div>
 </div>
 </section>
-<a href="{{ url('/logout') }}" class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
+<a href="{{ url('breeder/logout') }}" class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
 <section class="page-section clearfix">
     <div class="container">
         <div class="intro">

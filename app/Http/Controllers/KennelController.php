@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeBreederController extends Controller
+class KennelController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,7 +13,7 @@ class HomeBreederController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('user_breed');
+      
     }
 
     /**
@@ -23,6 +23,6 @@ class HomeBreederController extends Controller
      */
     public function index()
     {
-        return view('breeder_home');
+        return view('kennel');
     }
 }

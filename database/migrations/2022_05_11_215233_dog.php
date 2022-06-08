@@ -23,8 +23,8 @@ return new class extends Migration
             $table->double('weight');
             $table->string('health_tests', 300);
 
-            $table->integer('user_breed_id')->unsigned();
-            $table->foreign('user_breed_id')->references('id')->on('user_breed');
+            $table->integer('users_id')->unsigned();
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

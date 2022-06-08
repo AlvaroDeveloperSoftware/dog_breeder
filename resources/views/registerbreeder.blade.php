@@ -27,7 +27,7 @@
                     <div class="row d-flex justify-content-center" style="background: #d0bbbb;">
                         <div class="col-md-6 col-xl-4"><div class="card mb-5">
                             <div class="card-body shadow-lg d-flex flex-column align-items-center" style="background: #ad8f92;">
-                                <form class="text-center" method="POST" action="{{ route('register.breeder') }}">
+                                <form class="text-center" method="POST" action="{{ route('create.breeder') }}">
                                     @csrf
                                     <label class="form-label">EMAIL</label>
                                     <input name="email" class="form-control @error('email') is-invalid @enderror" type="email" style="margin-top: -5px;">
