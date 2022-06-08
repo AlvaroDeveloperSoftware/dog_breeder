@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 
 
-class RedirectIfAdmin
+class RedirectIfNotAdmin
 {
         /**
      * Handle an incoming request.

@@ -37,7 +37,7 @@ class AdminLoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('user')->except('logout');
+        $this->middleware('admin')->except('logout');
 
     }
 
