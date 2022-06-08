@@ -19,12 +19,19 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, $guard = null)
     {
-            if ($guard == "admin" && Auth::guard($guard)->check()) {
-                return redirect('admin.home');
-            }
-            if ($guard == "user" && Auth::guard($guard)->check()) {
-                return redirect('breeder.home');
-            }
-            return $next($request);
+        switch ($guard) {
+            case 'admin':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('admin.home');
+                }
+                break;
+
+            default:
+                if (Auth::guard($guard)->check()) {
+                    return redirect('breeder.home');
+                }
+                break;
         }
+        return $next($request);
+    }
 }

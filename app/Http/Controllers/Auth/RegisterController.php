@@ -78,7 +78,7 @@ class RegisterController extends Controller
 
         $user->save();
 
-        return redirect('breeder.home');
+        return redirect('breeder/home');
 
     }
 
