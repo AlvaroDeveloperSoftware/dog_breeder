@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\UserBreed;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -39,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('user');
+        $this->middleware('guest');
     }
 
     /**
@@ -53,37 +53,22 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'surnames' => ['string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'breed' => ['required', 'string', 'max:255'],
-            'years_breed' => ['integer'],
-            'photo' => ['required', 'string', 'max:255'],
-            'affix' => ['required', 'string'],
         ]);
     }
 
-    protected function create(Request $request)
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    protected function create(array $data)
     {
-        $user = new User;
-
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->surnames = $request->input('surnames');
-        $user->breed = $request->input('breed');
-        $user->years_breed = $request->input('years_breed');
-        $user->photo = $request->input('photo');
-        $user->phone = $request->input('phone');
-        $user->affix = $request->input('affix');
-        $user->password = Hash::make($request->input('password'));
-
-        $user->save();
-
-        return redirect('breeder/home');
-
-    }
-
-    public function index()
-    {
-        return view('breeder/registerbreeder');
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
 }

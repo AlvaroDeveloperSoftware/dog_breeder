@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dog_show', function(Blueprint $table){
-            $table->integer('id_show')->unsigned();
-            $table->foreign('id_show')->references('id')->on('show')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('id_dog')->unsigned();
+        Schema::create('gallery', function(Blueprint $table){
+            $table->increments('id');
+            $table->integer('id_dog')->unsigned()->nullable();
             $table->foreign('id_dog')->references('id')->on('dog')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('handler', 50);
-            $table->string('winner', 50);
+            $table->string('video', 500)->nullable();
+            $table->string('photo', 500)->nullable();
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dog_show');
+        Schema::dropIfExists('gallery');
     }
 };

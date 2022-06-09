@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('owner_dog', function(Blueprint $table){
-            $table->integer('id_owner')->unsigned()->nullable();
-            $table->foreign('id_owner')->references('id')->on('owner')->onDelete('cascade')->onUpdate('cascade');
+        Schema::create('dog_show', function(Blueprint $table){
+            $table->string('handler', 50);
+            $table->string('winner', 50);
+            $table->integer('id_show')->unsigned()->nullable();
+            $table->foreign('id_show')->references('id')->on('show')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('id_dog')->unsigned()->nullable();
             $table->foreign('id_dog')->references('id')->on('dog')->onDelete('cascade')->onUpdate('cascade');
+           
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('owner_dog');
+        Schema::dropIfExists('dog_show');
     }
 };

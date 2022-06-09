@@ -1,23 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\MessageBag;
-use App\Http\Models\Admin;
-use App\Http\Models\User;
 
 
-
-class LoginController extends Controller
+class UserBreedController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Login Controller
+    | UserBreed Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
@@ -33,8 +28,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'breeder/home';
-    
+    protected $redirectTo = '/home/breeder';
+
     /**
      * Create a new controller instance.
      *
@@ -42,15 +37,11 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('users')->except('logout');
-
+        $this->middleware('auth')->except('logout');
     }
 
-    public function logout(Request $request)
+    public function index () 
     {
-        Auth::guard('users')->logout();
-
-    return $this->loggedOut($request) ?: redirect('/login');
+        return view('breeder_home');
     }
-
 }

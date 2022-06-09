@@ -1,15 +1,15 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use App\Providers\RouteServiceProvider;
-use Closure;
 use Illuminate\Http\Request;
+use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
+
+class RedirectIfBreeder
 {
-    /**
+        /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -17,16 +17,12 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle($request, Closure $next, ...$guards)
+    public function handle($request, Closure $next, $guard="users")
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+        if(!auth()->guard($guard)->check()) {
+            return $next($request);
         }
+        return redirect(route('home.breeder'));
 
-        return $next($request);
     }
 }

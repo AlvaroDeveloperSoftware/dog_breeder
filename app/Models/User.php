@@ -1,51 +1,50 @@
 <?php
+
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use App\Notifications\MyResetPassword;
 
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
-    
-    use HasFactory;
+    use Notifiable;
 
-    protected $table = 'users';
 
+    protected $table = 'user_normal';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'name',
-        'id',
         'email',
-        'surnames',
-        'breed',
-        'years_breed',
-        'photo',
-        'affix',
-        'phone',
+        'password',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
         'password',
         'remember_token',
-        'email_verified_at',
-        'created_at',
-        'updated_at'
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification($token)
 {
     $this->notify(new MyResetPassword($token));
 }
-
 }
-?>
