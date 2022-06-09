@@ -23,6 +23,6 @@ class KennelController extends Controller
      */
     public function index()
     {
-        return view('kennel');
+        return view('admin/kennel');
     }
 }

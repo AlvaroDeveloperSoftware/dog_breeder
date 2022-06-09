@@ -1,10 +1,4 @@
 <?php
-
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeAdminController;
-use App\Http\Controllers\UserAdminController;
-use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,11 +29,11 @@ Auth::routes();
 
 
 
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->middleware(['admin'])->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@loginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.post');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
-    Route::get('/home', 'Auth\AdminLoginController@index')->name('admin.home');
+    Route::view('/home', '\App\Http\Controllers\UserAdminController@index')->name('admin.home');
      });
     //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     //  Route::get('/farm', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');

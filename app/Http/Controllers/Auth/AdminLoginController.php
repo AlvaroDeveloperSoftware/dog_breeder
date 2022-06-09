@@ -26,7 +26,7 @@ class AdminLoginController extends Controller
 
     public function loginForm()
     {
-        return view('auth.login_admin');
+        return view('admin/login_admin');
     }
 
     public function logout(Request $request)
@@ -44,9 +44,9 @@ class AdminLoginController extends Controller
         'password' => 'required'
       ]);
       // Attempt to log the user in
-      if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+      if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
-        return redirect('admin.home');
+        return redirect()->intended(route('admin.home'));
       } 
       // if unsuccessful, then redirect back to the login with the form data
       return redirect()->back()->withInput($request->only('email', 'remember'));
