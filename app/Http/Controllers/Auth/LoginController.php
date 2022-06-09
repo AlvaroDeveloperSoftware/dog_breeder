@@ -1,15 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\MessageBag;
-use App\Http\Models\Admin;
-use App\Http\Models\User;
 
 
 
@@ -33,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'breeder/home';
+    protected $redirectTo = RouteServiceProvider::HOME;
     
     /**
      * Create a new controller instance.
@@ -42,15 +38,39 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('users')->except('logout');
+        $this->middleware('user_normal')->except('logout');
 
     }
 
     public function logout(Request $request)
     {
-        Auth::guard('users')->logout();
+        Auth::guard('user_normal')->logout();
 
     return $this->loggedOut($request) ?: redirect('/login');
     }
+
+    public function login(Request $request)
+{
+    // Validate the form data
+    $validator = $this->validate($request, [
+    'email'   => 'required|email',
+    'password' => 'required|string'
+  ]);
+
+    // Attempt to log the customer in
+    if (Auth::guard('user_normal')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        // if successful, then redirect to their intended location
+        return redirect()->intended(route('home'));
+    } //attempt to log the seller in
+    if (Auth::guard('users')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        // if successful, then redirect to their intended location
+        return redirect()->intended(route('breeder.home'));
+    }
+
+    // if Auth::attempt fails (wrong credentials) create a new message bag instance.
+    $errors = new MessageBag(['password' => ['Email o contraseña incorrectos']]);
+    // redirect back to the login page, using ->withErrors($errors) you send the error created above
+    return redirect()->back()->withErrors($errors)->withInput($request->only('email', 'password'));
+}
 
 }

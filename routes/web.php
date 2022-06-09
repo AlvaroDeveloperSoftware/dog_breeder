@@ -1,4 +1,9 @@
 <?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegBreederController;
+use App\Http\Controllers\UserBreedController;
+use App\Http\Controllers\HomeBreederController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //Rutas admin
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::post('/register/breeder', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
 

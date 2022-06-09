@@ -70,7 +70,7 @@
                             --<a class="btn btn-link" style="border-width: 0px;border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;background: rgba(13,110,253,0);color: rgb(0,0,0);margin: 0px;margin-bottom: 37px;" href="{{ route('password.request') }}" >¿Has olvidado tu contraseña?</a>
                             @endif-->
                             <label class="form-label" style="text-align: center;color: rgb(0,0,0);">¿No tienes cuenta?</label>
-                            <a href="{{route('register.breeder')}}" class="btn btn-primary" type="button" style="background: #91686d;border-style: none;color: #65120d;text-align: center;font-size: 18px;">Registrate</a>
+                            <a href="{{route('register')}}" class="btn btn-primary" type="button" style="background: #91686d;border-style: none;color: #65120d;text-align: center;font-size: 18px;">Registrate</a>
                         </div>
                     </div>
                 </div>

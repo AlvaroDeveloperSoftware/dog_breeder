@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\MyResetPassword;
 
 
-class User extends Authenticatable
+class UserBreeder extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     

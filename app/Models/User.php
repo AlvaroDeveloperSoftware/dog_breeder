@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
-class Admin extends Authenticatable
+class User extends Authenticatable
 {
     use Notifiable;
 

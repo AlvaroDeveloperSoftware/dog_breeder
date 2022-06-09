@@ -62,7 +62,7 @@
                             <input id="password-confirm" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password">
                             <button class="btn btn-primary" type="submit" style="margin-top: 20px;color: rgb(0,0,0);font-weight: bold;border-radius: 15px;background: #d99e82; margin-bottom: 15px;">REGISTRARME</button>
                         </form>
-                        <a href="{{route('create.breeder')}}" class="btn btn-primary" type="button" style="background: #91686d;border-style: none;color: #65120d;text-align: center;font-size: 18px;">REGISTRARME COMO CRIADOR</a>
+                        <a href="{{route('register.breeder')}}" class="btn btn-primary" type="button" style="background: #91686d;border-style: none;color: #65120d;text-align: center;font-size: 18px;">REGISTRARME COMO CRIADOR</a>
 
                         <label class="form-label" style="margin-top: 16px;font-size: 18px;">¿Tienes cuenta?</label>
                         <a href="{{route('login')}}" class="btn btn-primary" type="button" style="background: #91686d;border-style: none;color: #65120d;text-align: center;font-size: 18px;">Iniciar sesión</a>

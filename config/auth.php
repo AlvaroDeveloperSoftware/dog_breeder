@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'user_normal',
         'passwords' => 'users',
     ],
 
@@ -36,7 +36,7 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'user_normal' => [
             'driver' => 'session',
             'provider' => 'user_normal',
         ],
@@ -71,7 +71,7 @@ return [
 
          'user_normal' => [
              'driver' => 'eloquent',
-             'model' => App\Models\UserNormal::class,
+             'model' => App\Models\User::class,
          ],
     ],
 
