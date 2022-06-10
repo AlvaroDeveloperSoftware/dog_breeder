@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegBreederController;
 use App\Http\Controllers\UserBreedController;
 use App\Http\Controllers\HomeBreederController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,14 @@ Route::get('/', function () {
 Auth::routes();
 
 //Rutas admin
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('user')->group(function() {
+    Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('user.home');   
+    Route::get('/logout', function(){
+        Auth::logout();
+        return Redirect::to('/login');
+     });
+    });
 
 // Route::post('/register/breeder', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
 
@@ -56,9 +64,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Rutas criador
 Route::prefix('breeder')->group(function() {
-    Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('breeder.home');
+    Route::get('/home', '\App\Http\Controllers\HomeBreederController@index')->name('breeder.home');
     Route::post('/register', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-    Route::get('/registerView', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
+    Route::get('/registerView', '\App\Http\Controllers\RegBreederController@index')->name('register.breeder');
     Route::get('/logout', function(){
         Auth::logout();
         return Redirect::to('/login');

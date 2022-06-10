@@ -1,12 +1,13 @@
 <?php
 namespace App\Http\Controllers\Auth;
+
+
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-
 
 
 class LoginController extends Controller
@@ -38,13 +39,13 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('user_normal')->except('logout');
-
+        $this->middleware('user_normal:users')->except('logout');
     }
 
     public function logout(Request $request)
     {
         Auth::guard('user_normal')->logout();
+        Auth::guard('users')->logout();
 
     return $this->loggedOut($request) ?: redirect('/login');
     }
@@ -60,7 +61,7 @@ class LoginController extends Controller
     // Attempt to log the customer in
     if (Auth::guard('user_normal')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
-        return redirect()->intended(route('home'));
+        return redirect()->intended(route('user.home'));
     } //attempt to log the seller in
     if (Auth::guard('users')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location

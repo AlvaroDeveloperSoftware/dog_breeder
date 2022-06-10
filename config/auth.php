@@ -66,7 +66,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\UserBreed::class,
+            'model' => App\Models\UserBreeder::class,
         ],
 
          'user_normal' => [

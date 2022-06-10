@@ -20,9 +20,10 @@ class RedirectIfBreeder
     public function handle($request, Closure $next, $guard="users")
     {
         if(!auth()->guard($guard)->check()) {
-            return $next($request);
+            return redirect(route('breeder.home'));
         }
-        return redirect(route('home.breeder'));
+        
+        return $next($request);
 
     }
 }

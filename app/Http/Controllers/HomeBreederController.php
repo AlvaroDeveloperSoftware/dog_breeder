@@ -13,7 +13,7 @@ class HomeBreederController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('breeder');
+        $this->middleware('users');
     }
 
     /**
@@ -23,6 +23,6 @@ class HomeBreederController extends Controller
      */
     public function index()
     {
-        return view('breeder_home');
+        return view('breeder/home');
     }
 }

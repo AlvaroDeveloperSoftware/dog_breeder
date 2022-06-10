@@ -53,7 +53,7 @@ class RegBreederController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users_breeder'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'surnames' => ['string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'breed' => ['required', 'string', 'max:255'],
@@ -79,6 +79,8 @@ class RegBreederController extends Controller
         $userBreeder->password = Hash::make($request->input('password'));
 
         $userBreeder->save();
+
+        // return redirect()->route('breeder.home');
     }
 
     public function updateUser(){
