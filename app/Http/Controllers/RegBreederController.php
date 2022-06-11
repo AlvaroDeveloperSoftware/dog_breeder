@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent;
 
-
 class RegBreederController extends Controller
 {
     /*
@@ -40,7 +39,7 @@ class RegBreederController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('users');
+        $this->middleware('users')->except('logout');
     }
 
     /**
@@ -80,7 +79,7 @@ class RegBreederController extends Controller
 
         $userBreeder->save();
 
-        // return redirect()->route('breeder.home');
+        return redirect()->route('breeder.home');
     }
 
     public function updateUser(){
@@ -89,6 +88,6 @@ class RegBreederController extends Controller
 
     public function index()
     {
-        return view('breeder/registerbreeder');
+        return view('breeder/register_breeder');
     }
 }
