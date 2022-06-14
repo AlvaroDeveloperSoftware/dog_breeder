@@ -174,7 +174,7 @@
                                             </li>
 
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">MI CRIADERO</a>
+                                                <a class="nav-link" href="{{route('farm.view')}}">MI CRIADERO</a>
                                             </li>
                                         </ul>
                                         <a class="nav-link" href="#"></a>

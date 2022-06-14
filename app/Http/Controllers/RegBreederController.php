@@ -88,6 +88,6 @@ class RegBreederController extends Controller
 
     public function index()
     {
-        return view('breeder/register_breeder');
+        return view('breeder.register_breeder');
     }
 }

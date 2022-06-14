@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('id_dog')->references('id')->on('dog')->onDelete('cascade')->onUpdate('cascade');
             $table->string('video', 500)->nullable();
             $table->string('photo', 500)->nullable();
+            $table->timestamps();
         });
     }
 

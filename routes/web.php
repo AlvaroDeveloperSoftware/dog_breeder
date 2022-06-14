@@ -70,11 +70,14 @@ Route::prefix('breeder')->group(function() {
         Auth::logout();
         return Redirect::to('/login');
      });
+    Route::get('/farm', '\App\Http\Controllers\KennelController@showFarm')->name('farm.view');
+    Route::get('/farm/create', '\App\Http\Controllers\KennelController@formDog')->name('createdog.view');
+    Route::post('/farm/create', '\App\Http\Controllers\KennelController@registerDog')->name('create.dog');
     //     //  Route::get('/config', '\App\Http\Controllers\HomeBreederController@index');
     //    //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-    //    //  Route::get('/farm', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
+    
     //    //  Route::put('/farm/update', '\App\Http\Controllers\HomeBreederController@index');
-    //    //  Route::post('/farm/create', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
+    
     //    //  Route::get('/farm/createView', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
     //    //  Route::get('/search', '\App\Http\Controllers\HomeBreederController@index');
     //    //  Route::get('/search/result', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');

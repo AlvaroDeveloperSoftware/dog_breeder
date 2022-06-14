@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('dog', function(Blueprint $table){
             $table->increments('id');
             $table->string('name', 30);
-            $table->integer('date_of_birth');
+            $table->date('date_of_birth');
             $table->enum('sex',  ['Male', 'Female']);
             $table->string('breed', 100);
             $table->double('height');
@@ -25,6 +25,7 @@ return new class extends Migration
 
             $table->integer('users_id')->unsigned()->nullable();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 
