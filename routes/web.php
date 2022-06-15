@@ -66,13 +66,11 @@ Route::prefix('breeder')->group(function() {
     Route::get('/registerView', '\App\Http\Controllers\RegBreederController@index')->name('register.view');
     Route::get('/home', '\App\Http\Controllers\HomeBreederController@index')->name('breeder.home');
     Route::post('/register', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-    Route::get('/logout', function(){
-        Auth::logout();
-        return Redirect::to('/login');
-     });
+    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     Route::get('/farm', '\App\Http\Controllers\KennelController@showFarm')->name('farm.view');
     Route::get('/farm/create', '\App\Http\Controllers\KennelController@formDog')->name('createdog.view');
     Route::post('/farm/create', '\App\Http\Controllers\KennelController@registerDog')->name('create.dog');
+    Route::get('/culture', '\App\Http\Controllers\HomeBreederController@culture')->name('culture');
     //     //  Route::get('/config', '\App\Http\Controllers\HomeBreederController@index');
     //    //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Dog;
 use App\Models\UserBreeder;
 use App\Models\Gallery;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 
@@ -36,6 +38,8 @@ class KennelController extends Controller
 
     public function registerDog(Request $request)
     {
+
+        $userBreed = UserBreeder::where('id', UserBreeder::first()->id);
             $dog = new Dog;
     
             $dog->name = $request->input('name');
@@ -48,31 +52,22 @@ class KennelController extends Controller
 
             $dog->save();
 
-            
-           
+
+            //Problema al insertar no recoge el id del usuario.
+            $userBreed = UserBreeder::find(['id']);
+
+            $dog->breeder()->associate($userBreed);
 
             $gallery = new Gallery;
 
             $gallery->photo = $request->input('photo');
 
+            $dog->gallery()->save($gallery);
 
-            //Attach para relacionar el criador con el ejemplar.
-            
-            $idDog = $dog->id;
+            $gallery->dog()->associate($dog);
 
-            $breeder = new UserBreeder;
-            $userBreed = UserBreeder::find($breeder->id);
-            $userBreed->dog()->attach($idDog);
-
-
-            $dog->gallery()->attach($gallery);
-
-            $gallery->dog()->attach($dog);
-
-            $dog->breeder()->attach($userBreed);
-
-             
             $gallery->save();
+
             return redirect()->route('breeder.home');
     }
 }

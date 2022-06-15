@@ -30,12 +30,13 @@ class Dog extends Model
         'users_id'
     ];
 
-    public function breeder (){
-        return $this->belongsTo(UserBreeder::class, 'users_id');
+    public function breeder(){
+
+        return $this->belongsTo(UserBreeder::class, 'users_id', 'id' );
     }
 
-    public function gallery (){
-        return $this->hasOne(Gallery::class, 'id_dog');
+    public function gallery(){
+        return $this->hasOne(Gallery::class, 'id', 'id_dog');
     }
 
     public function owner (){

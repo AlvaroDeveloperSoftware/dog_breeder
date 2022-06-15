@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreign('id_owner')->references('id')->on('owner')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('id_dog')->unsigned()->nullable();
             $table->foreign('id_dog')->references('id')->on('dog')->onDelete('cascade')->onUpdate('cascade');
+        
+            $table->primary(['id_owner', 'id_dog']);
         });
     }
 

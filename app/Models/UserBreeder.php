@@ -42,15 +42,15 @@ class UserBreeder extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-public function sendPasswordResetNotification($token)
-{
-    $this->notify(new MyResetPassword($token));
-}
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MyResetPassword($token));
+    }
 
-public function dog ()
-{
-    return $this->hasMany(Dog::class, 'id_dog');
-}
+    public function dog()
+    {
+        return $this->hasMany(Dog::class);
+    }
 
 }
 ?>

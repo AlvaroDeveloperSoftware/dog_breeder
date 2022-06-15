@@ -22,10 +22,10 @@ return new class extends Migration
             $table->double('height');
             $table->double('weight');
             $table->string('health_tests', 300);
-
-            $table->integer('users_id')->unsigned()->nullable();
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+
+            $table->integer('users_id')->nullable()->unsigned();
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

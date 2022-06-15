@@ -25,4 +25,12 @@ class HomeBreederController extends Controller
     {
         return view('breeder.home');
     }
+
+    /**
+     * Function for show view of culture, with information on canine world.
+     */
+    public function culture()
+    {
+        return view('breeder.culture');
+    }
 }

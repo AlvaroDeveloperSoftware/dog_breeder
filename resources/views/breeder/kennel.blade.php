@@ -183,7 +183,7 @@
                                         <a class="nav-link" href="#">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">CULTURA</a>
+                                        <a class="nav-link" href="{{route('culture')}}">CULTURA</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">EXPOSICIONES</a>
@@ -193,7 +193,6 @@
                             </div>
                         </div>
                     </nav>
-
                     <div class="collapse navbar-collapse flex-grow-0 order-md-first" id="navcol-6">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item"></li>
@@ -251,7 +250,7 @@
                     </div>
                 </div>
             </section>
-            <section class="bg-dark">
+            <section class="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65));">
                 <div class="simple-slider">
                     <div class="swiper-container">
                         <div class="swiper-wrapper"></div>
@@ -260,12 +259,11 @@
                         <div class="swiper-button-next"></div>
                     </div>
                 </div>
-                <button class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</button>
-
+                <a href="{{ url('breeder/logout') }}" class="btn btn-primary" type="button" style="margin-top: 100px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
                 <div class="container py-4 py-xl-5" style="color: white">
                     <div class="row mb-5">
                         <div class="col-md-8 col-xl-6 text-center mx-auto">
-                            <h2>Elige lo que desea hacer</h2>
+                            <h2>¿QUÉ DESEA HACER?</h2>
                             <p class="w-lg-50">Un criador necesita dos funciones principales, tener sus ejemplares almacenados de forma centralizada y poder modificar los ejemplares que crea.</p>
                         </div>
                     </div>
@@ -292,7 +290,7 @@
                 </div>
                 </section>
         </body>
-        <footer class="text-center" style="color: white">
+        <footer class="text-center bg-dark" style="color: white">
             <div class="container text-white py-4 py-lg-5">
                 <ul class="list-inline">
                     <li class="list-inline-item me-4"><a class="link-light">Álvaro Ramas Franco</a></li>
@@ -312,4 +310,4 @@
                 <p>Copyright © DOG BREEDER 2022</p>
             </div>
         </footer>
-        <html>
+<html>
