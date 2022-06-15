@@ -148,6 +148,7 @@
             <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
                 <div class="container">
                     <nav class="navbar navbar-light navbar-expand-md">
+                        <img src="/assets/logoDogBreeder.png" style="width: 150px; height:100px;margin-right: 50px"/>
                         <div class="container-fluid">
                             <button data-bs-toggle="collapse" data-bs-target="#navcol-6" class="navbar-toggler">
                                 <span class="visually-hidden">Menú</span><span class="navbar-toggler-icon"></span>

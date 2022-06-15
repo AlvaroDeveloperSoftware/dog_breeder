@@ -146,6 +146,7 @@
 </head>
         <body style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65));">
             <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
+                <img src="/assets/logoDogBreeder.png" style="width: 150" height="150" />
                 <div class="container">
                     <nav class="navbar navbar-light navbar-expand-md">
                         <div class="container-fluid">
