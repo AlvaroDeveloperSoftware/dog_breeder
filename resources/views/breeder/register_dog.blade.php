@@ -180,7 +180,7 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link" href="{{route('search.dog')}}">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('culture')}}">CULTURA</a>

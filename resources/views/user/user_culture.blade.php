@@ -20,6 +20,134 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .slide {
+            position: relative;
+            box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+            margin-top: auto;
+        }
+
+        .slide-inner {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: calc( 700px + 3em);
+        }
+
+        .slide-open:checked + .slide-item {
+            position: static;
+            opacity: 100;
+        }
+
+        .slide-item {
+            position: absolute;
+            opacity: 0;
+            -webkit-transition: opacity 0.6s ease-out;
+            transition: opacity 0.6s ease-out;
+        }
+
+        .slide-item img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .slide-control {
+            background: rgba(0, 0, 0, 0.28);
+            border-radius: 50%;
+            color: #fff;
+            cursor: pointer;
+            display: none;
+            font-size: 40px;
+            height: 40px;
+            line-height: 35px;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translate(0, -50%);
+            cursor: pointer;
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            text-align: center;
+            width: 40px;
+            z-index: 10;
+        }
+
+        .slide-control.prev {
+            left: 2%;
+        }
+
+        .slide-control.next {
+            right: 2%;
+        }
+
+        .slide-control:hover {
+            background: rgba(0, 0, 0, 0.8);
+            color: #aaaaaa;
+        }
+
+        #slide-1:checked ~ .control-1,
+        #slide-2:checked ~ .control-2,
+        #slide-3:checked ~ .control-3 {
+            display: block;
+        }
+
+        .slide-indicador {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            bottom: 2%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .slide-indicador li {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .slide-circulo {
+            color: #828282;
+            cursor: pointer;
+            display: block;
+            font-size: 35px;
+        }
+
+        .slide-circulo:hover {
+            color: #aaaaaa;
+        }
+
+        #slide-1:checked ~ .control-1 ~ .slide-indicador 
+             li:nth-child(1) .slide-circulo,
+        #slide-2:checked ~ .control-2 ~ .slide-indicador 
+              li:nth-child(2) .slide-circulo,
+        #slide-3:checked ~ .control-3 ~ .slide-indicador 
+              li:nth-child(3) .slide-circulo {
+            color: #428bca;
+        }
+
+        .imagenes {
+            width: 296px;
+            height: 296px;
+        }
+
+        #titulo {
+            width: 100%;
+            position: absolute;
+            padding: 0px;
+            margin: 0px auto;
+            text-align: center;
+            font-size: 27px;
+            color: rgba(255, 255, 255, 1);
+            font-family: 'Open Sans', sans-serif;
+            z-index: 9999;
+            text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), 
+                 -1px 0px 2px rgba(255, 255, 255, 0);
+        }
+    </style>
 </head>
         <body style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65));">
             <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
@@ -45,23 +173,22 @@
                                     <li class="nav-item">
                                         <ul class="navbar-nav">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{route('breeder.home')}}">INICIO</a>
+                                                <a class="nav-link" href="{{route('user.home')}}">INICIO</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#">CONFIGURACION</a>
                                             </li>
 
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{route('farm.view')}}">MI CRIADERO</a>
                                             </li>
                                         </ul>
                                         <a class="nav-link" href="#"></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('search.dog')}}">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link" href="#">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#">CULTURA</a>
+                                        <a class="nav-link active" href="{{route('user.culture')}}">CULTURA</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">EXPOSICIONES</a>
@@ -80,7 +207,6 @@
                         <div class="d-md-none my-2">
                             <button class="btn btn-light me-2" type="button">INICIO</button>
                             <button class="btn btn-primary" type="button">CONFIGURACION</button>
-                            <button class="btn btn-light me-2" type="button">MI CRIADERO</button>
                             <button class="btn btn-primary" type="button">BUSQUEDA DE EJEMPLARES</button>
                             <button class="btn btn-light me-2" type="button">CULTURA</button>
                             <button class="btn btn-primary" type="button">EXPOSICIONES</button>
@@ -96,7 +222,7 @@
                 <p class="w-lg-50">En esta sección aprenderás y tendrás acceso a las organizaciones o clubs más representativos de las razas caninas que forman la canofilia</p>
             </div>
         </div>
-        <div class="row gy-4 row-cols-2 row-cols-md-2 bg-white" style="border: 5px solid black; border-radius: 20px">
+        <div class="row gy-4 row-cols-2 row-cols-md-2">
             <div class="col">
                 <div class="d-flex flex-column flex-lg-row">
                     <div class="w-100"><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 200px;text-align: center;" src="/assets/organization/fci.png" /></div>
@@ -145,31 +271,32 @@
                     <div class="col"><img src="/assets/organization/españa.webp" style="margin-top: 12px;margin-left: 44px" width="150" /></div>
                 </div>
                 <div class="row g-0 row-cols-1 row-cols-md-2 row-cols-xl-3 photos" data-bss-baguettebox>
-                    <div class="col item"  style="margin-bottom: 5px"><a href="http://www.ancae.es"><img class="img-fluid" src="/assets/clubs/alano.png" /></a></div>
-                    <div class="col item" style="margin-bottom: 5px"><a href="https://www.ceast.es"><img class="img-fluid" src="/assets/clubs/american.png" /></a></div>
-                    <div class="col item" style="margin-bottom: 5px"><a href="www.bassethoundclub.es/"><img class="img-fluid" src="/assets/clubs/bassetHound.png" /></a></div>
-                    <div class="col item" style="margin-bottom: 5px"><a href="http://www.clubbeagle.com/"><img class="img-fluid" src="/assets/clubs/beagle.png" /></a></div>
-                    <div class="col item" style="margin-bottom: 5px"><a href="http://www.ratonerobodeguero.org/"><img class="img-fluid" src="/assets/clubs/bodeguero.png" /></a></div>
+                    <div class="col item"  style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/alano.png" /></a></div>
+                    <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/american.png" /></a></div>
+                    <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/azulGascuña.png" /></a></div>
+                    <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/bassetHound.png" /></a></div>
+                    <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/beagle.png" /></a></div>
+                    <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/bodeguero.png" /></a></div>
                 </div>
             </div>
             <br>
             <section class="photo-gallery py-4 py-xl-5">
                 <div class="container-fluid p-0">
                     <div class="row g-0 row-cols-1 row-cols-md-2 row-cols-xl-3 photos" data-bss-baguettebox>
-                        <div class="col item" style="margin-bottom: 5px"><a href="http://www.clubdelbostonterrier.es/"><img class="img-fluid" src="/assets/clubs/boston.png" /></a></div>
-                        <div class="col item" style="margin-bottom: 5px;"><a href="http://www.bouvierdeflandes.net/"><img class="img-fluid imagenes" src="/assets/clubs/bouvier.png" /></a></div>
-                        <div class="col item" style="margin-bottom: 5px"><a href="http://www.boxerclub.es/"><img class="img-fluid" src="/assets/clubs/boxer.png" /></a></div>
-                        <div class="col item" style="margin-bottom: 5px"><a href="http://www.clubbracoaleman.es/"><img class="img-fluid" src="/assets/clubs/bracoAleman.png" /></a></div>
-                        <div class="col item" style="margin-bottom: 5px"><a href="http://www.aebw.org/"><img class="img-fluid" src="/assets/clubs/bracoWeimar.png" /></a></div>
-                        <div class="col item" style="margin-bottom: 5px"><a href="http://www.clubesp-epbreton.es/"><img class="img-fluid" src="/assets/clubs/Breton.png" /></a></div>
+                        <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/boston.png" /></a></div>
+                        <div class="col item" style="margin-bottom: 5px;"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid imagenes" src="/assets/clubs/bouvier.png" /></a></div>
+                        <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/boxer.png" /></a></div>
+                        <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/bracoAleman.png" /></a></div>
+                        <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/bracoWeimar.png" /></a></div>
+                        <div class="col item" style="margin-bottom: 5px"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/Breton.png" /></a></div>
                     </div>
                 </div>
                 <section class="photo-gallery py-4 py-xl-5">
                     <div class="container-fluid p-0">
                         <div class="row g-0 row-cols-1 row-cols-md-2 row-cols-xl-3 photos" data-bss-baguettebox>
-                            <div class="col item"><a href="https://www.aefrbf.es"><img class="img-fluid" src="/assets/clubs/BullDogFrances.png" /></a></div>
+                            <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/BullDogFrances.png" /></a></div>
                             <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/bulldogIngles.png" /></a></div>
-                            <div class="col item"><a href="https://www.cbte.es"><img class="img-fluid" src="/assets/clubs/bullTerrier.png" /></a></div>
+                            <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/bullTerrier.png" /></a></div>
                             <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/canecorso.png" /></a></div>
                             <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/carlino.png" /></a></div>
                             <div class="col item"><a href="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"><img class="img-fluid" src="/assets/clubs/collie.png" /></a></div>

@@ -33,4 +33,12 @@ class HomeBreederController extends Controller
     {
         return view('breeder.culture');
     }
+
+     /**
+     * Function for search the dogs of the system.
+     */
+    public function searchView()
+    {
+        return view('breeder.searchDog');
+    }
 }

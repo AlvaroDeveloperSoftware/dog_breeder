@@ -28,4 +28,12 @@ class HomeController extends Controller
         return view('user.user_home');
     }
 
+      /**
+     * Function for show view of culture, with information on canine world.
+     */
+    public function userculture()
+    {
+        return view('user.user_culture');
+    }
+
 }

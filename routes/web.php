@@ -24,10 +24,8 @@ Auth::routes();
 
 Route::prefix('user')->group(function() {
     Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('user.home');   
-    Route::get('/logout', function(){
-        Auth::logout();
-        return Redirect::to('/login');
-     });
+    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+    Route::get('/culture', '\App\Http\Controllers\HomeController@userculture')->name('user.culture');
     });
 
 // Route::post('/register/breeder', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
@@ -77,7 +75,7 @@ Route::prefix('breeder')->group(function() {
     //    //  Route::put('/farm/update', '\App\Http\Controllers\HomeBreederController@index');
     
     //    //  Route::get('/farm/createView', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-    //    //  Route::get('/search', '\App\Http\Controllers\HomeBreederController@index');
+    Route::get('/search', '\App\Http\Controllers\HomeBreederController@searchView')->name('search.dog');
     //    //  Route::get('/search/result', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     //    //  Route::get('/culture', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
     //    //  Route::get('/home', '\App\Http\Controllers\HomeBreederController@index');

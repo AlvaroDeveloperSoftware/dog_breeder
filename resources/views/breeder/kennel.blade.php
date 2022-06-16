@@ -181,7 +181,7 @@
                                         <a class="nav-link" href="#"></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link" href="{{route('search.dog')}}">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('culture')}}">CULTURA</a>
@@ -260,8 +260,7 @@
                         <div class="swiper-button-next"></div>
                     </div>
                 </div>
-                <a href="{{ url('breeder/logout') }}" class="btn btn-primary" type="button" style="margin-top: 100px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
-                <div class="container py-4 py-xl-5" style="color: white">
+                <div class="container py-4 py-xl-5" style="color: black">
                     <div class="row mb-5">
                         <div class="col-md-8 col-xl-6 text-center mx-auto">
                             <h2>¿QUÉ DESEA HACER?</h2>
@@ -273,8 +272,7 @@
                             <div>
                                 <div class="py-4">
                                     <a href="{{route('createdog.view')}}"><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 400px" src="../assets/Añadirejemplar.PNG" /></a>
-                                        <h4 class="text-center" style="margin-top: 10px">Crear ejemplar</h4>
-                                        <p class="text-center">Añade a tu criadero nuevos ejemplares.</p>
+                                        <p class="text-center" style="font-size: 30px">Añade a tu criadero nuevos ejemplares</p>
                                 </div>
                             </div>
                         </div>
@@ -282,14 +280,15 @@
                             <div>
                                 <div class="py-4">
                                     <a href=""><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 400px" src="../assets/Modificarejemplar.png" /></a>
-                                    <h4 class="text-center"  style="margin-top: 10px">Modificar ejemplar</h4>
-                                    <p class="text-center">Modifica tus ejemplares.</p>
+                                    <p class="text-center" style="font-size: 30px">Modifica los ejemplares que tengas almacenados</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 </section>
+                <a href="{{ url('breeder/logout') }}" class="btn btn-primary" type="button" style="margin-top: 100px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
+
         </body>
         <footer class="text-center bg-dark" style="color: white">
             <div class="container text-white py-4 py-lg-5">
