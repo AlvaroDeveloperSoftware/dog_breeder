@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('health_tests', 300);
             $table->timestamps();
 
-            $table->integer('users_id')->nullable()->unsigned();
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('user_breeder_id')->unsigned();
+            $table->foreign('user_breeder_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -27,12 +27,12 @@ class Dog extends Model
         'height',
         'weight',
         'health_tests',
-        'users_id'
+        'user_breeder_id'
     ];
 
     public function breeder(){
 
-        return $this->belongsTo(UserBreeder::class, 'users_id', 'id' );
+        return $this->belongsTo(UserBreeder::class, 'user_breeder_id', 'id' );
     }
 
     public function gallery(){

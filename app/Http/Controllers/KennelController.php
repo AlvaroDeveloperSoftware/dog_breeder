@@ -38,10 +38,8 @@ class KennelController extends Controller
 
     public function registerDog(Request $request)
     {
-
-        $userBreed = UserBreeder::where('id', UserBreeder::first()->id);
             $dog = new Dog;
-    
+
             $dog->name = $request->input('name');
             $dog->date_of_birth = $request->input('date_of_birth');
             $dog->sex = $request->input('sex');
@@ -49,12 +47,12 @@ class KennelController extends Controller
             $dog->height = $request->input('height');
             $dog->weight = $request->input('weight');
             $dog->health_tests = $request->input('health_tests');
-
+            $dog->users_id =  UserBreeder::with(['dog'])->get();
             $dog->save();
 
 
             //Problema al insertar no recoge el id del usuario.
-            $userBreed = UserBreeder::find(['id']);
+            $userBreed = UserBreeder::find($id);
 
             $dog->breeder()->associate($userBreed);
 

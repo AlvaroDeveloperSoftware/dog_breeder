@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeBreederController extends Controller
+class BreederController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,7 +13,7 @@ class HomeBreederController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('users')->except('logout');
+        $this->middleware('auth:users')->except('logout');
     }
 
     /**

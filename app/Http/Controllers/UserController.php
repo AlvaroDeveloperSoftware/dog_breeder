@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
-class HomeController extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('user_normal');
+        $this->middleware('auth:user_normal');
     }
 
     /**

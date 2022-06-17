@@ -273,7 +273,7 @@
             <h6 class="text-muted card-subtitle mb-2"></h6>
             <p class="card-text text-center">Introduce o modifica tus ejemplares en el sistema.</p>
             </div>
-            <div class="card-footer p-4 py-3"><a href="{{route('create.dog')}}" style="color: black">Ir a Mi Criadero</a>
+            <div class="card-footer p-4 py-3"><a href="{{route('farm.view')}}" style="color: black">Ir a Mi Criadero</a>
             </div>
             </div>
             </div>

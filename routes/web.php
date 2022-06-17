@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegBreederController;
-use App\Http\Controllers\HomeBreederController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BreederController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +22,10 @@ Auth::routes();
 
 //Rutas admin
 
-Route::prefix('user')->group(function() {
-    Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('user.home');   
+Route::group(['prefix' => 'user', 'middleware' => ['user_normal']], function(){
+    Route::get('/home', '\App\Http\Controllers\UserController@index')->name('user.home');   
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-    Route::get('/culture', '\App\Http\Controllers\HomeController@userculture')->name('user.culture');
+    Route::get('/culture', '\App\Http\Controllers\UserController@userculture')->name('user.culture');
     });
 
 // Route::post('/register/breeder', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
@@ -60,15 +60,15 @@ Route::prefix('user')->group(function() {
   
 
 //Rutas criador
-Route::prefix('breeder')->group(function() {
+Route::group(['prefix' => 'breeder', 'middleware' => ['users']], function() {
     Route::get('/registerView', '\App\Http\Controllers\RegBreederController@index')->name('register.view');
-    Route::get('/home', '\App\Http\Controllers\HomeBreederController@index')->name('breeder.home');
+    Route::get('/home', '\App\Http\Controllers\BreederController@index')->name('breeder.home');
     Route::post('/register', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     Route::get('/farm', '\App\Http\Controllers\KennelController@showFarm')->name('farm.view');
     Route::get('/farm/create', '\App\Http\Controllers\KennelController@formDog')->name('createdog.view');
     Route::post('/farm/create', '\App\Http\Controllers\KennelController@registerDog')->name('create.dog');
-    Route::get('/culture', '\App\Http\Controllers\HomeBreederController@culture')->name('culture');
+    Route::get('/culture', '\App\Http\Controllers\BreederController@culture')->name('culture');
     //     //  Route::get('/config', '\App\Http\Controllers\HomeBreederController@index');
     //    //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     

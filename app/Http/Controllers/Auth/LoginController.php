@@ -9,6 +9,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Session;
+
 
 
 class LoginController extends Controller
@@ -64,7 +66,7 @@ class LoginController extends Controller
         // if successful, then redirect to their intended location
         return redirect()->intended(route('user.home'));
     } //attempt to log the seller in
-    if (Auth::guard('users')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+    if (Auth::guard('users')->attempt(['email'  => $request->email, 'password' => $request->password], $request->remember)) {
         // if successful, then redirect to their intended location
         return redirect()->intended(route('breeder.home'));
     }

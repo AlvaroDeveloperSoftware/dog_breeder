@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('dog_show', function(Blueprint $table){
             $table->string('handler', 50);
             $table->string('winner', 50);
-            $table->integer('id_show')->unsigned()->nullable();
+            $table->integer('id_show')->unsigned();
             $table->foreign('id_show')->references('id')->on('show')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('id_dog')->unsigned()->nullable();
+            $table->integer('id_dog')->unsigned();
             $table->foreign('id_dog')->references('id')->on('dog')->onDelete('cascade')->onUpdate('cascade');
            
+            $table->primary(['id_show', 'id_dog']);
         });
     }
 
