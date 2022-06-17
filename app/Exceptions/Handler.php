@@ -39,7 +39,12 @@ class Handler extends ExceptionHandler
          case 'admin':
            $login='admin.login';
            break;
-           
+        case 'users':
+            $login='login';
+            break;
+        case 'user':
+            $login='login';
+            break;
          default:
            $login='login';
            break;

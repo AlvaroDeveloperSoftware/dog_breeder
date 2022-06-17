@@ -47,14 +47,8 @@ class KennelController extends Controller
             $dog->height = $request->input('height');
             $dog->weight = $request->input('weight');
             $dog->health_tests = $request->input('health_tests');
-            $dog->users_id =  UserBreeder::with(['dog'])->get();
+            
             $dog->save();
-
-
-            //Problema al insertar no recoge el id del usuario.
-            $userBreed = UserBreeder::find($id);
-
-            $dog->breeder()->associate($userBreed);
 
             $gallery = new Gallery;
 

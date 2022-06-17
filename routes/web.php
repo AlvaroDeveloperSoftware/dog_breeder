@@ -20,21 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Rutas admin
-
 Route::group(['prefix' => 'user', 'middleware' => ['user_normal']], function(){
     Route::get('/home', '\App\Http\Controllers\UserController@index')->name('user.home');   
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     Route::get('/culture', '\App\Http\Controllers\UserController@userculture')->name('user.culture');
     });
 
-// Route::post('/register/breeder', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-
-// Route::get('/register/breeder', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-
-// Route::get('/home/breeder', '\App\Http\Controllers\HomeBreederController@index')->name('home.breeder');
-
-//Route::get('/login', '\App\Http\Controllers\Auth\LoginController@login')->name('login');
 //Rutas admin
 
 
@@ -60,6 +51,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['user_normal']], function(){
   
 
 //Rutas criador
+
 Route::group(['prefix' => 'breeder', 'middleware' => ['users']], function() {
     Route::get('/registerView', '\App\Http\Controllers\RegBreederController@index')->name('register.view');
     Route::get('/home', '\App\Http\Controllers\BreederController@index')->name('breeder.home');
