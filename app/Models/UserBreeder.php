@@ -49,7 +49,18 @@ class UserBreeder extends Authenticatable
 
     public function dog()
     {
-        return $this->hasMany(Dog::class);
+        
+        return $this->hasMany(Dog::class, 'id_dog', 'id');
+    }
+
+    public function getId()
+    {
+    return $this->id;
+    }
+
+    public function getName()
+    {
+    return $this->name;
     }
 
 }

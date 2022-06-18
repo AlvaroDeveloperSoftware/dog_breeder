@@ -13,19 +13,21 @@ class Gallery extends Model
     use HasFactory;
 
     protected $table = 'gallery';
+
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'video',
         'photo',
-        'id',
-        'id_dog'
+        'id_dog',
     ];
 
     public function dog (){
-        return $this->belongsTo(Dog::class, 'id');
+        return $this->hasMany(Dog::class, 'id_dog', 'id');
     }
 }

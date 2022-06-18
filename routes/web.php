@@ -64,10 +64,10 @@ Route::group(['prefix' => 'breeder', 'middleware' => ['users']], function() {
     //     //  Route::get('/config', '\App\Http\Controllers\HomeBreederController@index');
     //    //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     
-    //    //  Route::put('/farm/update', '\App\Http\Controllers\HomeBreederController@index');
-    
+    Route::get('/farm/update', '\App\Http\Controllers\KennelController@modifyView')->name('modify.view');
+    Route::put('/farm/update', '\App\Http\Controllers\KennelController@modify')->name('modify');
     //    //  Route::get('/farm/createView', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-    Route::get('/search', '\App\Http\Controllers\HomeBreederController@searchView')->name('search.dog');
+    Route::get('/search', '\App\Http\Controllers\BreederController@searchView')->name('search');
     //    //  Route::get('/search/result', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     //    //  Route::get('/culture', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
     //    //  Route::get('/home', '\App\Http\Controllers\HomeBreederController@index');

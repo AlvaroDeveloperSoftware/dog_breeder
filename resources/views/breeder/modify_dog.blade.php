@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Búsqueda de ejemplares</title>
+    <title>Modificación de ejemplares</title>
 
     <link rel="icon" href="{{ url('assets/logoDogBreeder.PNG') }}">
 
@@ -58,7 +58,7 @@
                                         <a class="nav-link" href="#"></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{{route('search.dog')}}">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link active" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('culture')}}">CULTURA</a>
@@ -104,17 +104,35 @@
                 
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
                     <img src="/assets/buscar.png" style="width:100px;height:75px";/>
-                    <h2>BÚSQUEDA DE EJEMPLARES</h2>
-                    <p>Busca los ejemplares que quiera, si no los encuentra comuniquese con el desarrollador para que los introduzca en el sistema. </p>
+                    <h2>MODIFICACIÓN DE EJEMPLARES</h2>
+                    <p>Modifica tus ejemplares</p>
                 </div>
             </div>
             <section class="position-relative py-4 py-xl-5" style="text-align: center;">
                 <div class="container">
-                    <div class="row d-flex justify-content-center" style="margin: 0px;">
-                        <div class="col"><label class="form-label">NOMBRE</label><input type="search" style="margin-left: 14px;" /><label class="form-label" style="margin-left: 14px;margin-right: 17px;">RAZA</label><input type="search" /><label class="form-label" style="margin-left: 18px;margin-right: 16px;">NACIMIENTO</label><input type="search" /></div>
-                    </div>
+                    <form action="{{route('modify')}}" method="get">
                 </div>
-                <button class="btn btn-primary" type="button" style="margin-top: 14px;">BUSCAR</button>
+            <div class="panel panel-success">
+                <div style="margin-bottom: 20px" class="panel-heading">Resultado de la busqueda</div>
+                <div class="panel-body">
+                    <div class='table-responsive'>
+                      <table class='table table-bordered table-hover'>
+                        <thead>
+                          <tr>
+                            <th>NOMBRE</th>
+                            <th>RAZA</th>
+                            <th>FECHA DE NACIMIENTO</th>
+                            <th>SEXO</th>
+                            <th>PESO</th>
+                            <th>ALTURA</th>
+                            <th>PRUEBAS DE SALUD</th>
+                            <th>PROPIETARIO</th>
+                          </tr>
+                        </thead>
+                            </table>
+                        </div>
+                </div>
+            </div>
             </section>
         </div>
     </section>

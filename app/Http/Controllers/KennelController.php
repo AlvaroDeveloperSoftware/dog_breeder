@@ -18,7 +18,7 @@ class KennelController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('users')->except('logout');
+        $this->middleware('auth:users')->except('logout');
     }
 
     /**
@@ -38,28 +38,69 @@ class KennelController extends Controller
 
     public function registerDog(Request $request)
     {
-            $dog = new Dog;
+            $dogs = new Dog;
 
-            $dog->name = $request->input('name');
-            $dog->date_of_birth = $request->input('date_of_birth');
-            $dog->sex = $request->input('sex');
-            $dog->breed = $request->input('date_of_birth');
-            $dog->height = $request->input('height');
-            $dog->weight = $request->input('weight');
-            $dog->health_tests = $request->input('health_tests');
+            $dogs->name = $request->input('name');
+            $dogs->date_of_birth = $request->input('date_of_birth');
+            $dogs->sex = $request->input('sex');
+            $dogs->breed = $request->input('breed');
+            $dogs->height = $request->input('height');
+            $dogs->weight = $request->input('weight');
+            $dogs->owner = $request->input('owner');
+            $dogs->health_tests = $request->input('health_tests');
+            $dogs->user_breeder_id = Auth::user()->getId();
             
-            $dog->save();
+            $dogs->save();
 
             $gallery = new Gallery;
 
             $gallery->photo = $request->input('photo');
 
-            $dog->gallery()->save($gallery);
+            $gallery->id_dog = $dogs->getId();
 
-            $gallery->dog()->associate($dog);
+
 
             $gallery->save();
+            
 
             return redirect()->route('breeder.home');
     }
+
+    public function modifyView()
+    {
+        return view('breeder.modify_dog');
+    }
+
+    public function modify(Request $request, $id)
+    {
+        $dog = new Dog;
+
+        $dog->name = $request->name;
+        $dog->date_of_birth = $request->date_of_birth;
+        $dog->height = $request->height;
+        $dog->weight = $request->weight;
+        $dog->health_tests = $request->health_tests;
+        $dog->owner = $request->owner;
+
+        $idDog = $id;
+
+        $dog = Dog::where('id', $idDog)->update(['name' => 
+        $dog->name, 'date_of_birth' => $dog->date_of_birth,
+        'height' => $dog->height, 'weight' => $dog->weight, 
+        'health_tests' => $dog->health_tests, 'owner' =>
+        $dog->owner]);
+
+        return view('breeder.home');
+    }
+
+
+    public function search(Request $request)
+    {
+       $name = $request->get('name');
+
+       $dogs = Dog::where('name', 'like', '%' .$name. '%');
+       
+        return view('breeder.search', compact('dogs'));
+
+        }
 }

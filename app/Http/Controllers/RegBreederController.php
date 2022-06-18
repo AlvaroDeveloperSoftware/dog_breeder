@@ -59,6 +59,7 @@ class RegBreederController extends Controller
             'years_breed' => ['integer'],
             'photo' => ['required', 'string', 'max:255'],
             'affix' => ['required', 'string'],
+            
         ]);
     }
 

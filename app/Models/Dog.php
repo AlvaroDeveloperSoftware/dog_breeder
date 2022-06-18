@@ -13,6 +13,7 @@ class Dog extends Model
     use HasFactory;
 
     protected $table = 'dog';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,14 +21,16 @@ class Dog extends Model
      */
     protected $fillable = [
         'name',
+        'id',
         'email',
         'date_of_birth',
         'sex',
         'breed',
         'height',
         'weight',
+        'owner',
         'health_tests',
-        'user_breeder_id'
+        'user_breeder_id',
     ];
 
     public function breeder(){
@@ -36,11 +39,7 @@ class Dog extends Model
     }
 
     public function gallery(){
-        return $this->hasOne(Gallery::class, 'id', 'id_dog');
-    }
-
-    public function owner (){
-        return $this->belongsToMany(Owner::class, 'id');
+        return $this->hasMany(Gallery::class, 'id', 'id_dog');
     }
 
     /**
@@ -52,4 +51,20 @@ class Dog extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function getId()
+    {
+    return $this->id;
+    }
+
+    public function getName()
+    {
+    return $this->name;
+    }
+
+    public function getOwner()
+    {
+    return $this->owner;
+    }
+
 }

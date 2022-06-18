@@ -180,7 +180,7 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('search.dog')}}">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('culture')}}">CULTURA</a>
@@ -238,15 +238,17 @@
                                         <input name="date_of_birth" class="form-control" type="date" required/>
                                         <label class="form-label">SEXO</label>
                                         <div class="form-check" required>
-                                            <input id="formCheck-1" name="sex" value="Male" class="form-check-input" type="radio" style="margin-left: 44px;" />
+                                            <input id="formCheck-1" name="sex" value="Macho" class="form-check-input" type="radio" style="margin-left: 44px;" />
                                             <label class="form-check-label" for="formCheck-1">M</label>
                                         </div>
                                         <div class="form-check">
-                                            <input id="formCheck-2" name="sex" value="Female" class="form-check-input" type="radio" style="margin-left: 44px;" />
+                                            <input id="formCheck-2" name="sex" value="Hembra" class="form-check-input" type="radio" style="margin-left: 44px;" />
                                             <label class="form-check-label" for="formCheck-2">H</label>
                                         </div>
                                         <label class="form-label">RAZA</label>
                                         <input class="form-control" type="text" name="breed" required/>
+                                        <label class="form-label">PROPIETARIO</label>
+                                        <input class="form-control" type="text" name="owner" required/>
                                         <label class="form-label">ALTURA</label>
                                         <input class="form-control" type="text" name="height" required/>
                                         <label class="form-label">PESO</label>

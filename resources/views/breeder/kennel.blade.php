@@ -181,7 +181,7 @@
                                         <a class="nav-link" href="#"></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('search.dog')}}">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('culture')}}">CULTURA</a>
@@ -279,7 +279,7 @@
                         <div class="col">
                             <div>
                                 <div class="py-4">
-                                    <a href=""><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 400px" src="../assets/Modificarejemplar.png" /></a>
+                                    <a href="{{route('modify.view')}}"><img class="rounded img-fluid d-block w-100 fit-cover" style="height: 400px" src="../assets/Modificarejemplar.png" /></a>
                                     <p class="text-center" style="font-size: 30px">Modifica los ejemplares que tengas almacenados</p>
                                 </div>
                             </div>
