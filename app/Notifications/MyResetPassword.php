@@ -8,6 +8,9 @@ use Illuminate\Auth\Notifications\ResetPassword;
 class MyResetPassword extends ResetPassword
 {
 
+    /**
+     * Function for create new message for send email.
+     */
     public function toMail($notifiable)
     {
         return (new MailMessage)

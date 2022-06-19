@@ -5,6 +5,12 @@ use App\Http\Controllers\RegBreederController;
 use App\Http\Controllers\BreederController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KennelController;
+
+/**
+ * File of routes.
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +27,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Routes for user normals, routes protected with middleware.
 Route::group(['prefix' => 'user', 'middleware' => ['user_normal']], function(){
     Route::get('/home', '\App\Http\Controllers\UserController@index')->name('user.home');   
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
@@ -31,31 +38,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['user_normal']], function(){
     
 });
 
-//Rutas admin
-
-
-
-// Route::prefix('admin')->middleware(['admin'])->group(function() {
-//     Route::get('/login', 'Auth\AdminLoginController@loginForm')->name('admin.login');
-//     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.post');
-//     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
-//     Route::view('/home', '\App\Http\Controllers\UserAdminController@index')->name('admin.home');
-//      });
-    //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-    //  Route::get('/farm', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-    //  Route::put('/farm/update', '\App\Http\Controllers\HomeBreederController@index');
-    //  Route::post('/farm/create', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-    //  Route::get('/farm/createView', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-    //  Route::get('/search', '\App\Http\Controllers\HomeBreederController@index');
-    //  Route::get('/search/result', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-    //  Route::get('/culture', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-    //  Route::get('/home', '\App\Http\Controllers\HomeBreederController@index');
-    //  Route::get('/show', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-    //  Route::delete('/farm/{id}', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-
-  
-
-//Rutas criador
+//Routes for breeders, routes protected with middleware.
 
 Route::group(['prefix' => 'breeder', 'middleware' => ['users']], function() {
     Route::get('/registerView', '\App\Http\Controllers\RegBreederController@index')->name('register.view');

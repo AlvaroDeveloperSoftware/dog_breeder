@@ -1,18 +1,26 @@
 <?php
 
+namespace Tests\Feature\Http\Controllers\Auth;
+
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+/**
+ * Test for Login Controller
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
+class LoginControllerTest extends TestCase
 {
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function test_that_true_is_true()
+    public function login()
     {
-        $this->assertTrue(true);
+        $response = $this->get(route('login'));
+        $response->assertStatus(200);
     }
 }

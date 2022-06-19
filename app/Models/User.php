@@ -11,6 +11,11 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\MyResetPassword;
 
 
+/**
+ * Class User.
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -54,6 +59,7 @@ class User extends Authenticatable
 
 /**
  * Relationship M:N between model User and Dog
+ * @return relation M:N.
  */
 public function dog() {
     return $this->belongsToMany(User::class, 'user_normal_dog', 'id_user_normal', 'id_dog');

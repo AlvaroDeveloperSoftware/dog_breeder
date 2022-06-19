@@ -6,7 +6,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-
+/**
+ * Class Gallery.
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 class Gallery extends Model
 {
 
@@ -27,6 +31,9 @@ class Gallery extends Model
         'id_dog',
     ];
 
+    /**
+     * Function for relationship Gallery with Dog.
+     */
     public function dog (){
         return $this->hasMany(Dog::class, 'id_dog', 'id');
     }

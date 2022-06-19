@@ -10,6 +10,11 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * Class Register Controller
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 class RegisterController extends Controller
 {
     /*
@@ -26,7 +31,7 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Where to redirect user after registration.
      *
      * @var string
      */

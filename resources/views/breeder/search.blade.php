@@ -56,14 +56,13 @@
                                                 <a class="nav-link" href="{{route('breeder.home')}}">INICIO</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">CONFIGURACION</a>
+                                                <a class="nav-link" href="{{route('config')}}">CONFIGURACION</a>
                                             </li>
 
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('farm.view')}}">MI CRIADERO</a>
                                             </li>
                                         </ul>
-                                        <a class="nav-link" href="{{route('config')}}"></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link active" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>
@@ -86,12 +85,13 @@
                             </li>
                         </ul>
                         <div class="d-md-none my-2">
-                            <button class="btn btn-light me-2" type="button">INICIO</button>
-                            <button class="btn btn-primary" type="button">CONFIGURACION</button>
-                            <button class="btn btn-light me-2" type="button">MI CRIADERO</button>
-                            <button class="btn btn-primary" type="button">BUSQUEDA DE EJEMPLARES</button>
-                            <button class="btn btn-light me-2" type="button">CULTURA</button>
-                            <button class="btn btn-primary" type="button">EXPOSICIONES</button>
+                            <div class="d-md-none my-2">
+                                <a class="btn btn-primary" href="{{route('config')}}" style="color: black">CONFIGURACION</a>
+                                <a class="btn btn-primary" href="{{route('farm.view')}}" style="color: black">MI CRIADERO</a>
+                                <a class="btn btn-primary" href="{{route('search')}}" style="color: black">BUSQUEDA DE EJEMPLARES</a>
+                                <a class="btn btn-primary" href="{{route('culture')}}" style="color: black">CULTURA</a>
+                                <a class="btn btn-primary" href="#" style="color: black">EXPOSICIONES</a>
+                            </div>
                         </div>
                     </div>
                     <div class="d-none d-md-block"></div>

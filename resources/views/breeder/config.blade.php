@@ -77,12 +77,11 @@
                             </li>
                         </ul>
                         <div class="d-md-none my-2">
-                            <button class="btn btn-light me-2" type="button">INICIO</button>
-                            <button class="btn btn-primary" type="button">CONFIGURACION</button>
-                            <button class="btn btn-light me-2" type="button">MI CRIADERO</button>
-                            <button class="btn btn-primary" type="button">BUSQUEDA DE EJEMPLARES</button>
-                            <button class="btn btn-light me-2" type="button">CULTURA</button>
-                            <button class="btn btn-primary" type="button">EXPOSICIONES</button>
+                            <a class="btn btn-primary" href="{{route('config')}}" style="color: black">CONFIGURACION</a>
+                            <a class="btn btn-primary" href="{{route('farm.view')}}" style="color: black">MI CRIADERO</a>
+                            <a class="btn btn-primary" href="{{route('search')}}" style="color: black">BUSQUEDA DE EJEMPLARES</a>
+                            <a class="btn btn-primary" href="{{route('culture')}}" style="color: black">CULTURA</a>
+                            <a class="btn btn-primary" href="#" style="color: black">EXPOSICIONES</a>
                         </div>
                     </div>
                     <div class="d-none d-md-block"></div>
@@ -110,7 +109,7 @@
                     <td>{{Auth::user()->phone}}</td>
                 </tr>
             </table>
-            <div style="margin-bottom: 100px">
+            <div style="margin-bottom: 300px">
             <a style="display: flex;justify-content: center" href="{{ route('logout') }}" class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN <svg style="margin-left: 10px;margin-top: 2px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>

@@ -73,12 +73,10 @@
                             </li>
                         </ul>
                         <div class="d-md-none my-2">
-                            <button class="btn btn-light me-2" type="button">INICIO</button>
-                            <button class="btn btn-primary" type="button">CONFIGURACION</button>
-                            <button class="btn btn-light me-2" type="button">MI CRIADERO</button>
-                            <button class="btn btn-primary" type="button">BUSQUEDA DE EJEMPLARES</button>
-                            <button class="btn btn-light me-2" type="button">CULTURA</button>
-                            <button class="btn btn-primary" type="button">EXPOSICIONES</button>
+                            <a class="btn btn-primary" href="{{route('user.config')}}" style="color: black">CONFIGURACION</a>
+                                <a class="btn btn-primary" href="{{route('user.search')}}" style="color: black">BUSQUEDA DE EJEMPLARES</a>
+                                <a class="btn btn-primary" href="{{route('user.culture')}}" style="color: black">CULTURA</a>
+                                <a class="btn btn-primary" href="#" style="color: black">EXPOSICIONES</a>
                         </div>
                     </div>
                     <div class="d-none d-md-block"></div>

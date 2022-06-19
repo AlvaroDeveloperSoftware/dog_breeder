@@ -9,6 +9,11 @@ use App\Models\Gallery;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class BreederController
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 class BreederController extends Controller
 {
     /**
@@ -18,6 +23,7 @@ class BreederController extends Controller
      */
     public function __construct()
     {
+        //Establish middleware for auth and users for recognize users.
         $this->middleware('auth:users')->except('logout');
     }
 
@@ -26,17 +32,21 @@ class BreederController extends Controller
      */
     public function update(Request $request)
     {
-        $userDetails = Auth::user();  // To get the logged-in user details
-        $user = User::find($userDetails ->id);  // Find the user using model and hold its reference
+        /**
+         * With the class Auth and method 'user' are obtain
+         * the information necesary of user logged.
+         */
+        $userDetails = Auth::user();  
+        $user = User::find($userDetails ->id); 
         $user->name=$request->input('name');
         $user->email=$request->input('email');
 
-        $user->save();  // Update the data
+        //Save the fields.
+        $user->save();
     }
 
     /**
-     * Show the application dashboard.
-     *
+     * Show the application breeder home.
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
@@ -46,12 +56,17 @@ class BreederController extends Controller
 
     /**
      * Function for show view of culture, with information on canine world.
+     * @return view of culture breeder.
      */
     public function culture()
     {
         return view('breeder.culture');
     }
 
+    /**
+     * Function for config of breeder view, with information of users.
+     * @return view of config data breeder.
+     */
     public function config()
     {
         return view('breeder.config');
@@ -59,11 +74,15 @@ class BreederController extends Controller
 
      /**
      * Function for search the dogs of the system.
+     * @return view of search dog.
      */
     public function searchView(Request $request)
     {
+        //Obtain all registers of dog table.
         $dogs = Dog::all();
 
+
+        //If the petition is true, obtain query for Dog, the query contains the request of necesary fields.
         if($request){
             $filtro = trim($request->get('name', 'breed'));
             $query = Dog::select('dog.name', 'dog.sex', 'dog.date_of_birth', 

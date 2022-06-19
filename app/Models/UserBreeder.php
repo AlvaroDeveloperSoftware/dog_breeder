@@ -9,7 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\MyResetPassword;
 
-
+/**
+ * Class UserBreeder.
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 class UserBreeder extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -42,22 +46,38 @@ class UserBreeder extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+      /**
+     * Function for send passoword
+     * @return notify.
+     */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new MyResetPassword($token));
     }
 
+    /**
+     * Function for relationship 1:N
+     * @return hasMany dogs.
+     */
     public function dog()
     {
         
         return $this->hasMany(Dog::class, 'id_dog', 'id');
     }
 
+    /**
+     * Function for obtain getId UserBreeder.
+     * @return id.
+     */
     public function getId()
     {
     return $this->id;
     }
 
+    /**
+     * Function for obtain getName UserBreeder.
+     * @return name.
+     */
     public function getName()
     {
     return $this->name;

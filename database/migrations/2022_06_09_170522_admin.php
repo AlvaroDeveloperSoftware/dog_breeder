@@ -4,6 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration admin.
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 return new class extends Migration
 {
     /**

@@ -35,6 +35,8 @@ return [
     |
     */
 
+
+    //Guards create for protected authentication.
     'guards' => [
         'user_normal' => [
             'driver' => 'session',
@@ -63,6 +65,7 @@ return [
     |
     */
 
+    //Providers defined for Models and Eloquent.
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
@@ -90,6 +93,7 @@ return [
     |
     */
 
+    //Passowords resets.
     'passwords' => [
         'users' => [
             'provider' => 'users',

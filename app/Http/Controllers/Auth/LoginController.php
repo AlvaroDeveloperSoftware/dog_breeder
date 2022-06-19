@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Session;
 
-
+/**
+ * Class Login Controller.
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 
 class LoginController extends Controller
 {
@@ -45,6 +49,10 @@ class LoginController extends Controller
         $this->middleware('user_normal:users')->except('logout');
     }
 
+    /**
+     * Public function that allow users (normal and users breeder) 
+     * close session.
+     */
     public function logout(Request $request)
     {
         Auth::guard('user_normal')->logout();
@@ -53,6 +61,12 @@ class LoginController extends Controller
     return $this->loggedOut($request) ?: redirect('/login');
     }
 
+    /**
+     * Function login that verified and validate the credentials of 
+     * users, the credentials email and password depending of guard
+     * auth, if the guard is 'user_normal', redirect to route of user_normal
+     * else if the route redirect was breeder.home.
+     */
     public function login(Request $request)
 {
     // Validate the form data

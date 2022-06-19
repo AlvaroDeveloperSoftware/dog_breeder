@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent;
 
+/**
+ * Class Controller for Register that Breeder.
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 class RegBreederController extends Controller
 {
     /*
@@ -63,11 +68,17 @@ class RegBreederController extends Controller
         ]);
     }
 
+    /**
+     * Function that create users like breeders.
+     * @return redirect route at breeder.home.
+     */
     public function createUserBreed(Request $request)
     {
 
+        //Create instance of UserBreeder
         $userBreeder = new UserBreeder;
 
+        //Obtains data of form with $request.
         $userBreeder->name = $request->input('name');
         $userBreeder->email = $request->input('email');
         $userBreeder->surnames = $request->input('surnames');
@@ -78,15 +89,16 @@ class RegBreederController extends Controller
         $userBreeder->affix = $request->input('affix');
         $userBreeder->password = Hash::make($request->input('password'));
 
+        //Save user.
         $userBreeder->save();
 
         return redirect()->route('breeder.home');
     }
 
-    public function updateUser(){
-        
-    }
-
+    /**
+     * Function index for register breeder.
+     * @return view for register like breeder.
+     */
     public function index()
     {
         return view('breeder.register_breeder');

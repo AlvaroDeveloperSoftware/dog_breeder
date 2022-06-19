@@ -7,10 +7,15 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class for way to authenticated depending user.
+ * @author Álvaro Ramas Franco
+ * @since 1.0.
+ */
 class RedirectIfAuthenticated
 {
     /**
-     * Handle an incoming request.
+     * Depending guard, check is logged and redirect for respective route.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
