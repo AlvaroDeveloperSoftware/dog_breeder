@@ -31,6 +31,7 @@ class KennelController extends Controller
         return view('breeder.kennel');
     }
 
+
     public function formDog()
     {
         return view('breeder.register_dog');
@@ -71,36 +72,49 @@ class KennelController extends Controller
         return view('breeder.modify_dog');
     }
 
-    public function modify(Request $request, $id)
-    {
-        $dog = new Dog;
+    public function edit(Dog $dog){
 
-        $dog->name = $request->name;
-        $dog->date_of_birth = $request->date_of_birth;
-        $dog->height = $request->height;
-        $dog->weight = $request->weight;
-        $dog->health_tests = $request->health_tests;
-        $dog->owner = $request->owner;
-
-        $idDog = $id;
-
-        $dog = Dog::where('id', $idDog)->update(['name' => 
-        $dog->name, 'date_of_birth' => $dog->date_of_birth,
-        'height' => $dog->height, 'weight' => $dog->weight, 
-        'health_tests' => $dog->health_tests, 'owner' =>
-        $dog->owner]);
-
-        return view('breeder.home');
+        return view('breeder.dog_edit', compact('dog'));
     }
 
-
-    public function search(Request $request)
+        public function destroy($dog)
     {
-       $name = $request->get('name');
+        $dog = Dog::find($dog);
+        
+        $dog->delete();
+        return view('breeder.modify_dog', compact('dog'));
 
-       $dogs = Dog::where('name', 'like', '%' .$name. '%');
-       
-        return view('breeder.search', compact('dogs'));
+    }
 
-        }
+    public function update(Request $request, $id){
+        $dog = Dog::findOrFail($id);
+        $dog->name = $request->get('name');
+        $dog->date_of_birth = $request->get('date_of_birth');
+        $dog->sex = $request->get('sex');
+        $dog->breed = $request->get('breed');
+        $dog->height = $request->get('height');
+        $dog->weight = $request->get('weight');
+        $dog->owner = $request->get('owner');
+        $dog->health_tests = $request->get('health_tests');
+
+
+        $dog->save();
+
+        $gallery = Gallery::findOrFail($idGallery);
+
+        $gallery->photo = $request->input('photo');
+
+        $gallery->id_dog = $dogs->getId();
+
+        $gallery->save();
+
+        return redirect()->route('KennelController@edit', compact('dog'));
+    }
+
+    public function show(Request $request){
+
+        $dog= Dog::all();
+
+        return view('breeder.modify_dog', compact('dog'));
+    }
 }

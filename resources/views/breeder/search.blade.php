@@ -14,10 +14,18 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <style>
+
+
+        .w-5{
+            display: none;
+            justify-content: center;
+        }
+        </style>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -108,12 +116,12 @@
                     <p>Busca los ejemplares que quiera, si no los encuentra comuniquese con el desarrollador para que los introduzca en el sistema. </p>
                 </div>
             </div>
-            <section class="position-relative py-4 py-xl-5" style="text-align: center;">
+            <section style="text-align: center;">
                 <div class="container">
                     <form action="{{route('search')}}" method="get">
                     <div class="row d-flex justify-content-center" style="margin: 0px;">
                         <div class="col">
-                            <input name="buscador" placeholder="Buscar por nombre" type="search" style="margin-left: 14px;" />
+                            <input name="name" placeholder="Buscar por nombre" type="search" style="margin-left: 14px;" />
                             <input name="breed" placeholder="Buscar por raza" type="search" />
                             <input type="submit" style="margin-top: 14px;margin-bottom: 14px;" value="BUSCAR">
                     <input type="submit" style="margin-top: 14px;margin-bottom: 14px;" value="MOSTRAR TODOS">
@@ -122,10 +130,10 @@
                 </div>
             <div class="panel panel-success">               
                 <div class="panel-body">
-                    <div class='table-responsive'>
                       <table class='table table-bordered table-hover'>
                         <thead>
                           <tr>
+                            <th>FOTO</th>
                             <th>NOMBRE</th>
                             <th>RAZA</th>
                             <th>FECHA DE NACIMIENTO</th>
@@ -138,11 +146,14 @@
                         </thead>
 
                         <tbody>
-                            @if($dogs === null)
-                            <h1>La lista de ejemplares esta vacía</h1>
-                            @else
-                            @foreach ($dogs as $dog)
+                            @if(count($query)<=0)
                             <tr>
+                                <td colspan="8">No hay resultados</td>
+                            </tr>
+                            @else
+                            @foreach ($query as $dog)
+                            <tr>
+                                <td><img src="/assets/{{$dog->photo}}" width="150px"/></td>
                                 <td>{{ $dog->name}}</td>
                                 <td>{{ $dog->breed}}</td>
                                 <td>{{ $dog->date_of_birth}}</td>
@@ -154,11 +165,16 @@
                             </tr>
                             @endforeach
                             @endif
+                            
                         </tbody>
+                     
+
                             </table>
-                            {{$dogs->links()}}
-                        </div>
+
                 </div>
+                <span class="pagination justify-content-center">
+                    {{$query->links()}}
+                </span>
             </div>
             </section>
         </div>

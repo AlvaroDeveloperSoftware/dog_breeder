@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegBreederController;
 use App\Http\Controllers\BreederController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KennelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,23 +65,10 @@ Route::group(['prefix' => 'breeder', 'middleware' => ['users']], function() {
     //     //  Route::get('/config', '\App\Http\Controllers\HomeBreederController@index');
     //    //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
     
-    Route::get('/farm/update', '\App\Http\Controllers\KennelController@modifyView')->name('modify.view');
-    Route::put('/farm/update', '\App\Http\Controllers\KennelController@modify')->name('modify');
-    //    //  Route::get('/farm/createView', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
+    Route::get('/farm/update', '\App\Http\Controllers\KennelController@show')->name('modify.view');
+    Route::get('/farm/update/edit}', '\App\Http\Controllers\KennelController@editDog')->name('edit');
+    Route::put('/farm/update/editForm', '\App\Http\Controllers\KennelController@update')->name('modify');
     Route::get('/search', '\App\Http\Controllers\BreederController@searchView')->name('search');
-    //    //  Route::get('/search/result', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-    //    //  Route::get('/culture', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-    //    //  Route::get('/home', '\App\Http\Controllers\HomeBreederController@index');
-    //    //  Route::get('/show', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
-    //    //  Route::delete('/farm/{id}', 'App\Http\Controllers\RegBreederController@index')->name('register.breeder');
-    //    });
+    Route::delete('/farm/delete/{dog}', '\App\Http\Controllers\KennelController@destroy')->name('delete.dog');
 
-    // Route::group(['middleware'=>'user_noraml', 'prefix' => 'user'], function() {
-    //     Route::get('/home', '\App\Http\Controllers\HomeBreederController@index')->name('breeder.home');
-    //     Route::post('/register', '\App\Http\Controllers\RegUserNormalController@createUser')->name('create.user');
-    //     Route::get('/registerView', '\App\Http\Controllers\RegUserNormalController@index')->name('register.user');
-    //     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
     });
-    // });
-
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

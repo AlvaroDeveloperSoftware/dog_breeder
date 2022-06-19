@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Dog;
 use App\Models\UserBreeder;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -59,15 +60,15 @@ class BreederController extends Controller
         $dogs = Dog::all();
 
         if($request){
-            $query = trim($request->get('buscador'));
+            $filtro = trim($request->get('name', 'breed'));
+            $query = Dog::select('dog.name', 'dog.sex', 'dog.date_of_birth', 
+            'dog.breed', 'dog.height', 'dog.weight', 'health_tests', 'owner',
+            'gallery.photo')->where('name', 'LIKE', '%' . $filtro. '%')
+             ->orWhere('breed', 'LIKE', '%' .$filtro . '%')->orderBy('name', 'asc')
+            ->join('gallery', 'dog.id', '=', 'gallery.id_dog')
+            ->paginate(2);
 
-            $dogs = Dog::where('name', 'LIKE', '%' . $query . '%')
-            ->orWhere('breed', 'LIKE', '%' .$query . '%')
-            ->orWhere('owner', 'LIKE', '%' .$query . '%')
-            ->orderBy('name', 'asc')
-            ->paginate(5);
-
-            return view('breeder.search', compact('dogs', 'query'));
+            return view('breeder.search', compact('query'));
 
         }
     }

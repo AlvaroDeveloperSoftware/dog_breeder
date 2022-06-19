@@ -293,7 +293,7 @@
 </div>
 </div>
 </section>
-<a href="{{ url('breeder/logout') }}" class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
+<a href="{{ route('logout') }}" class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
 <section class="page-section clearfix">
     <div class="container">
         <div class="intro">

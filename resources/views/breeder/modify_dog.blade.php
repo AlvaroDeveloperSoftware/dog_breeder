@@ -52,13 +52,13 @@
                                             </li>
 
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{route('farm.view')}}">MI CRIADERO</a>
+                                                <a class="nav-link active" href="{{route('farm.view')}}">MI CRIADERO</a>
                                             </li>
                                         </ul>
                                         <a class="nav-link" href="#"></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('culture')}}">CULTURA</a>
@@ -101,7 +101,6 @@
         </div>
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
-                
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
                     <img src="/assets/modificacion.png" style="width:100px;height:75px";/>
                     <h2>MODIFICACIÓN DE EJEMPLARES</h2>
@@ -119,6 +118,7 @@
                       <table class='table table-bordered table-hover'>
                         <thead>
                           <tr>
+                            <th>OPCIONES</th>
                             <th>NOMBRE</th>
                             <th>RAZA</th>
                             <th>FECHA DE NACIMIENTO</th>
@@ -129,6 +129,33 @@
                             <th>PROPIETARIO</th>
                           </tr>
                         </thead>
+                        <tbody>
+                            
+                            @if(isset($dog)<=0)
+                            <tr>
+                                <td colspan="8">No hay resultados</td>
+                            </tr>
+                            @else
+                            @foreach ($dog as $dogs)
+                            <tr>
+                                <td><a href="{{route('modify.view')}}" class="btn btn-warning btn-sm">Editar</a></td>
+                                <form action="{{route('delete.dog'.$dog->id)}}" method="post">
+                                    @CSRF
+                                    @method('DELETE')
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
+                                <td>{{ $dogs->name}}</td>
+                                <td>{{ $dogs->breed}}</td>
+                                <td>{{ $dogs->date_of_birth}}</td>
+                                <td>{{ $dogs->sex}}</td>
+                                <td>{{ $dogs->height.'cm'}}</td>
+                                <td>{{ $dogs->weight.'kg'}}</td>
+                                <td>{{ $dogs->health_tests}}</td>
+                                <td>{{ $dogs->owner}}</td>
+                                @endforeach
+                                @endif
+                            </tr>
+                        </tbody>
+
                             </table>
                         </div>
                 </div>
