@@ -25,7 +25,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function index()
     {
-        $response = $this->get(route('login'));
+        $response = $this->get(route('logeo'));
     
         $response->assertStatus(200);
         $response->assertViewIs('auth.login');
