@@ -55,7 +55,7 @@
                                                 <a class="nav-link active" href="{{route('farm.view')}}">MI CRIADERO</a>
                                             </li>
                                         </ul>
-                                        <a class="nav-link" href="#"></a>
+                                        <a class="nav-link" href="{{route('config')}}"></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>
@@ -138,11 +138,9 @@
                             @else
                             @foreach ($dog as $dogs)
                             <tr>
-                                <td><a href="{{route('modify.view')}}" class="btn btn-warning btn-sm">Editar</a></td>
-                                <form action="{{route('delete.dog'.$dog->id)}}" method="post">
-                                    @CSRF
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-danger btn-sm" value="Eliminar">
+                                <td><a href="{{route('modify.view')}}" class="btn btn-warning btn-sm">Editar</a>
+                                <button href="{{route('delete.dog')}}" type="submit" class="btn btn-danger btn-sm" value="Eliminar">Eliminar</button></td>
+                                <td>{{ $dogs->name}}</td>
                                 <td>{{ $dogs->name}}</td>
                                 <td>{{ $dogs->breed}}</td>
                                 <td>{{ $dogs->date_of_birth}}</td>
@@ -163,7 +161,6 @@
             </section>
         </div>
     </section>
-    <a href="{{ url('user/logout') }}" class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
     <section class="page-section clearfix">
         <div class="container">
             <div class="intro"></div>

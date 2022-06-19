@@ -36,4 +36,9 @@ class UserController extends Controller
         return view('user.user_culture');
     }
 
+    public function config()
+    {
+        return view('user.user_config');
+    }
+
 }

@@ -172,13 +172,11 @@
                                                 <a class="nav-link active" href="#">INICIO</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">CONFIGURACION</a>
+                                                <a class="nav-link" href="{{route('user.config')}}">CONFIGURACION</a>
                                             </li>
-                                        </ul>
-                                        <a class="nav-link" href="#"></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link" href="{{route('user.search')}}">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('user.culture')}}">CULTURA</a>
@@ -243,7 +241,7 @@
                         </ol>
                     </div>
                 </div>
-                <div class="container h-100 position-relative" style="top: 125px;">
+                <div class="container h-100 position-relative" style="top: 100px;margin-bottom:150px">
                     <div class="row gy-5 gy-lg-0 row-cols-1 row-cols-md-2 row-cols-lg-2">
                         <div class="col">
                             <div class="card" style="border: 2px solid black;">
@@ -254,7 +252,7 @@
                         <p class="card-text text-center">Personaliza tus datos introducidos.</p>
                         </div>
                         <div class="card-footer p-4 py-3">
-                            <a href="#" style="color: black">Ir a Configuración</a>
+                            <a href="{{route('config')}}" style="color: black">Ir a Configuración</a>
                     </div>
                 </div>
             </div>
@@ -267,14 +265,13 @@
 <h6 class="text-muted card-subtitle mb-2"></h6>
 <p class="card-text text-center">Busca los ejemplares de los demás criadores.</p>
 </div>
-<div class="card-footer p-4 py-3"><a href="#" style="color: black">Ir Buscar ejemplares</a>
+<div class="card-footer p-4 py-3"><a href="{{route('search')}}" style="color: black">Ir Buscar ejemplares</a>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<a href="{{ url('/logout') }}" class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
 <section class="page-section clearfix">
     <div class="container">
         <div class="intro">

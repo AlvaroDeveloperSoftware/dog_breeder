@@ -171,14 +171,13 @@
                                                 <a class="nav-link active" href="#">INICIO</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">CONFIGURACION</a>
+                                                <a class="nav-link" href="{{route('config')}}">CONFIGURACION</a>
                                             </li>
 
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('farm.view')}}">MI CRIADERO</a>
                                             </li>
                                         </ul>
-                                        <a class="nav-link" href="#"></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>
@@ -249,7 +248,7 @@
                         </ol>
                     </div>
                 </div>
-                <div class="container h-100 position-relative" style="top: 125px;">
+                <div class="container h-100 position-relative" style="top: 100px;margin-bottom:150px">
                     <div class="row gy-5 gy-lg-0 row-cols-1 row-cols-md-2 row-cols-lg-3">
                         <div class="col">
                             <div class="card" style="border: 2px solid black;">
@@ -293,7 +292,6 @@
 </div>
 </div>
 </section>
-<a href="{{ route('logout') }}" class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
 <section class="page-section clearfix">
     <div class="container">
         <div class="intro">

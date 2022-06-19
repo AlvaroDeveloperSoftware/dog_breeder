@@ -171,7 +171,7 @@
                                                 <a class="nav-link" href="{{route('breeder.home')}}">INICIO</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">CONFIGURACION</a>
+                                                <a class="nav-link" href="{{route('config')}}">CONFIGURACION</a>
                                             </li>
 
                                             <li class="nav-item">
@@ -287,8 +287,6 @@
                     </div>
                 </div>
                 </section>
-                <a href="{{ url('breeder/logout') }}" class="btn btn-primary" type="button" style="margin-top: 100px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN</a>
-
         </body>
         <footer class="text-center bg-dark" style="color: white">
             <div class="container text-white py-4 py-lg-5">

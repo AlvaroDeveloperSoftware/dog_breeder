@@ -7,25 +7,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Búsqueda de ejemplares</title>
+    <title>Configuracion de usuario</title>
 
     <link rel="icon" href="{{ url('assets/logoDogBreeder.PNG') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <style>
-
-
-        .w-5{
-            display: none;
-            justify-content: center;
-        }
-        </style>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -53,23 +45,18 @@
                                     <li class="nav-item">
                                         <ul class="navbar-nav">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{route('breeder.home')}}">INICIO</a>
+                                                <a class="nav-link" href="{{route('user.home')}}">INICIO</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">CONFIGURACION</a>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{route('farm.view')}}">MI CRIADERO</a>
+                                                <a class="nav-link active" href="{{route('user.config')}}">CONFIGURACION</a>
                                             </li>
                                         </ul>
-                                        <a class="nav-link" href="{{route('config')}}"></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link" href="{{route('user.search')}}">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('culture')}}">CULTURA</a>
+                                        <a class="nav-link" href="{{route('user.culture')}}">CULTURA</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">EXPOSICIONES</a>
@@ -97,89 +84,27 @@
                     <div class="d-none d-md-block"></div>
                 </div>
             </nav>
-    <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3"></span><span class="site-heading-lower"></span></h1>
-    <section>
-        <div class="simple-slider">
-            <div class="swiper-container">
-                <div class="swiper-wrapper"></div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+            <h1 style="text-align: center;margin-top: 10px">Tus datos {{Auth::user()->name}} {{Auth::user()->surnames}}</h1>
             </div>
-        </div>
-        <div class="container py-4 py-xl-5">
-            <div class="row mb-5">
-                
-                <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <img src="/assets/buscar.png" style="width:100px;height:75px";/>
-                    <h2>BÚSQUEDA DE EJEMPLARES</h2>
-                    <p>Busca los ejemplares que quiera, si no los encuentra comuniquese con el desarrollador para que los introduzca en el sistema. </p>
-                </div>
+            <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>EMAIL</th>
+                    <th>TELEFONO</th>
+                </tr>
+                <tr>
+                    <td>{{Auth::user()->email}}</td>
+                    <td>{{Auth::user()->phone}}</td>
+                </tr>
+            </table>
+            <div style="margin-bottom: 300px">
+            <a style="display: flex;justify-content: center" href="{{ route('logout') }}" class="btn btn-primary" type="button" style="margin-top: 283px;margin-left: 14px;color: rgb(0,0,0);background: #7b5757;margin-bottom: -64px;">CERRAR SESIÓN <svg style="margin-left: 10px;margin-top: 2px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+              </svg></a>
             </div>
-            <section style="text-align: center;">
-                <div class="container">
-                    <form action="{{route('search')}}" method="get">
-                    <div class="row d-flex justify-content-center" style="margin: 0px;">
-                        <div class="col">
-                            <input name="name" placeholder="Buscar por nombre" type="search" style="margin-left: 14px;" />
-                            <input name="breed" placeholder="Buscar por raza" type="search" />
-                            <input type="submit" style="margin-top: 14px;margin-bottom: 14px;" value="BUSCAR">
-                    <input type="submit" style="margin-top: 14px;margin-bottom: 14px;" value="MOSTRAR TODOS">
-                        </div>
-                </form>
-                </div>
-            <div class="panel panel-success">               
-                <div class="panel-body">
-                      <table class='table table-bordered table-hover'>
-                        <thead>
-                          <tr>
-                            <th>FOTO</th>
-                            <th>NOMBRE</th>
-                            <th>RAZA</th>
-                            <th>FECHA DE NACIMIENTO</th>
-                            <th>SEXO</th>
-                            <th>PESO</th>
-                            <th>ALTURA</th>
-                            <th>PRUEBAS DE SALUD</th>
-                            <th>PROPIETARIO</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                            @if(count($query)<=0)
-                            <tr>
-                                <td colspan="8">No hay resultados</td>
-                            </tr>
-                            @else
-                            @foreach ($query as $dog)
-                            <tr>
-                                <td><img src="/assets/{{$dog->photo}}" width="150px"/></td>
-                                <td>{{ $dog->name}}</td>
-                                <td>{{ $dog->breed}}</td>
-                                <td>{{ $dog->date_of_birth}}</td>
-                                <td>{{ $dog->sex}}</td>
-                                <td>{{ $dog->height.'cm'}}</td>
-                                <td>{{ $dog->weight.'kg'}}</td>
-                                <td>{{ $dog->health_tests}}</td>
-                                <td>{{ $dog->owner}}</td>
-                            </tr>
-                            @endforeach
-                            @endif
-                            
-                        </tbody>
-                     
-
-                            </table>
-
-                </div>
-                <span class="pagination justify-content-center">
-                    {{$query->links()}}
-                </span>
             </div>
-            </section>
-        </div>
-    </section>
-    <section class="page-section clearfix">
+            <section class="page-section clearfix">
         <div class="container">
             <div class="intro"></div>
         </div>

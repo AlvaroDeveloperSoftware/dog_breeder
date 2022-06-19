@@ -51,4 +51,11 @@ class User extends Authenticatable
 {
     $this->notify(new MyResetPassword($token));
 }
+
+/**
+ * Relationship M:N between model User and Dog
+ */
+public function dog() {
+    return $this->belongsToMany(User::class, 'user_normal_dog', 'id_user_normal', 'id_dog');
+}
 }

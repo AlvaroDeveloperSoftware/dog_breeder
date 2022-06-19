@@ -52,6 +52,11 @@ class BreederController extends Controller
         return view('breeder.culture');
     }
 
+    public function config()
+    {
+        return view('breeder.config');
+    }
+
      /**
      * Function for search the dogs of the system.
      */

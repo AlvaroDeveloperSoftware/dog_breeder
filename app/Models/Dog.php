@@ -66,4 +66,11 @@ class Dog extends Model
     return $this->owner;
     }
 
+    /**
+ * Relationship M:N between model Dog and User
+ */
+    public function user_normal() {
+        return $this->belongsToMany(Dog::class, 'user_normal_dog', 'id_dog', 'id_user_normal');
+    }
+
 }

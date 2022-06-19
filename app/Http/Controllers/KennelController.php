@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Dog;
 use App\Models\UserBreeder;
+use App\Models\User;
 use App\Models\Gallery;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -59,10 +60,9 @@ class KennelController extends Controller
 
             $gallery->id_dog = $dogs->getId();
 
-
-
             $gallery->save();
-            
+
+            $dogs->user_normal()->attach(1);
 
             return redirect()->route('breeder.home');
     }

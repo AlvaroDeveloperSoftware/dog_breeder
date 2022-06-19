@@ -25,7 +25,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['user_normal']], function(){
     Route::get('/home', '\App\Http\Controllers\UserController@index')->name('user.home');   
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     Route::get('/culture', '\App\Http\Controllers\UserController@userculture')->name('user.culture');
-    });
+    Route::get('/search', '\App\Http\Controllers\UserController@searchView')->name('user.search');
+    Route::get('/config', '\App\Http\Controllers\UserController@config')->name('user.config');
+
+    
+});
 
 //Rutas admin
 
@@ -62,13 +66,11 @@ Route::group(['prefix' => 'breeder', 'middleware' => ['users']], function() {
     Route::get('/farm/create', '\App\Http\Controllers\KennelController@formDog')->name('createdog.view');
     Route::post('/farm/create', '\App\Http\Controllers\KennelController@registerDog')->name('create.dog');
     Route::get('/culture', '\App\Http\Controllers\BreederController@culture')->name('culture');
-    //     //  Route::get('/config', '\App\Http\Controllers\HomeBreederController@index');
-    //    //  Route::put('/config', '\App\Http\Controllers\RegBreederController@createUserBreed')->name('create.breeder');
+    Route::get('/config', '\App\Http\Controllers\BreederController@config')->name('config');
     
     Route::get('/farm/update', '\App\Http\Controllers\KennelController@show')->name('modify.view');
-    Route::get('/farm/update/edit}', '\App\Http\Controllers\KennelController@editDog')->name('edit');
     Route::put('/farm/update/editForm', '\App\Http\Controllers\KennelController@update')->name('modify');
     Route::get('/search', '\App\Http\Controllers\BreederController@searchView')->name('search');
-    Route::delete('/farm/delete/{dog}', '\App\Http\Controllers\KennelController@destroy')->name('delete.dog');
+    Route::delete('/farm/delete', '\App\Http\Controllers\KennelController@destroy')->name('delete.dog');
 
     });

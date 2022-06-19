@@ -48,14 +48,13 @@
                                                 <a class="nav-link" href="{{route('breeder.home')}}">INICIO</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#">CONFIGURACION</a>
+                                                <a class="nav-link" href="{{route('config')}}">CONFIGURACION</a>
                                             </li>
 
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('farm.view')}}">MI CRIADERO</a>
                                             </li>
                                         </ul>
-                                        <a class="nav-link" href="#"></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('search')}}">BUSQUEDA DE EJEMPLARES</a>

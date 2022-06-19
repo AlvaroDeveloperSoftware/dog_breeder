@@ -24,7 +24,7 @@
 <body style="background-color: #d0bbbb">
    
 <div class="container">
-    <h1 class="text-center" style="margin-top: 11px;color: #4f4f4f;">Iniciar Sesión</h1><!-- Start: Login Form Basic -->
+    <h1 class="text-center" style="margin-top: 11px;color: #4f4f4f;">Iniciar Sesión</h1>
     <section class="position-relative py-4 py-xl-5">
         <div class="container">
             <div class="row d-flex justify-content-center">
