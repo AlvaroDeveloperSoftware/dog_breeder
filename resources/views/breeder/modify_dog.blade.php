@@ -103,7 +103,7 @@
             <div class="row mb-5">
                 
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <img src="/assets/buscar.png" style="width:100px;height:75px";/>
+                    <img src="/assets/modificacion.png" style="width:100px;height:75px";/>
                     <h2>MODIFICACIÓN DE EJEMPLARES</h2>
                     <p>Modifica tus ejemplares</p>
                 </div>

@@ -58,15 +58,18 @@ class BreederController extends Controller
     {
         $dogs = Dog::all();
 
-        $name = $request->name;
-        $breed = $request->breed;
-        $birth = $request->date_of_birth;
+        if($request){
+            $query = trim($request->get('buscador'));
 
-        $consulta = Dog::where('name', 'LIKE', '%'.$name.'%')
-        ->orWhere('breed', 'LIKE', '%'.$breed.'%')
-        ->orWhere('date_of_birth', 'LIKE', '%'.$birth.'%')->paginate(10);
+            $dogs = Dog::where('name', 'LIKE', '%' . $query . '%')
+            ->orWhere('breed', 'LIKE', '%' .$query . '%')
+            ->orWhere('owner', 'LIKE', '%' .$query . '%')
+            ->orderBy('name', 'asc')
+            ->paginate(5);
 
-        return view('breeder.search', compact('dogs', 'consulta', 'name', 'breed', 'birth'));
+            return view('breeder.search', compact('dogs', 'query'));
+
+        }
     }
 
 }

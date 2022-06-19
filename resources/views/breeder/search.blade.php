@@ -113,16 +113,14 @@
                     <form action="{{route('search')}}" method="get">
                     <div class="row d-flex justify-content-center" style="margin: 0px;">
                         <div class="col">
-                            <input name="name" placeholder="Buscar por nombre" type="text" style="margin-left: 14px;" />
-                            <input name="breed" placeholder="Buscar por raza" type="text" />
-                            <input name="date_of_birth" placeholder="Buscar por fecha" type="date" /></div>
-                    </div>
-                    <input type="submit" style="margin-top: 14px;" value="BUSCAR">
+                            <input name="buscador" placeholder="Buscar por nombre" type="search" style="margin-left: 14px;" />
+                            <input name="breed" placeholder="Buscar por raza" type="search" />
+                            <input type="submit" style="margin-top: 14px;margin-bottom: 14px;" value="BUSCAR">
+                    <input type="submit" style="margin-top: 14px;margin-bottom: 14px;" value="MOSTRAR TODOS">
+                        </div>
                 </form>
-                    
                 </div>
-            <div class="panel panel-success">
-                <div style="margin-bottom: 20px" class="panel-heading">Resultado de la busqueda</div>
+            <div class="panel panel-success">               
                 <div class="panel-body">
                     <div class='table-responsive'>
                       <table class='table table-bordered table-hover'>
@@ -140,8 +138,7 @@
                         </thead>
 
                         <tbody>
-                        
-                            @if($dogs->isEmpty())
+                            @if($dogs === null)
                             <h1>La lista de ejemplares esta vacía</h1>
                             @else
                             @foreach ($dogs as $dog)
@@ -157,9 +154,9 @@
                             </tr>
                             @endforeach
                             @endif
-
                         </tbody>
                             </table>
+                            {{$dogs->links()}}
                         </div>
                 </div>
             </div>

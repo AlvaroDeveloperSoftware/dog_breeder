@@ -215,6 +215,7 @@
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <img src="/assets/anadir.png" style="width:100px;height:75px";/>
                     <h2>INSERTAR EJEMPLAR</h2>
                     <p class="w-lg-50"></p>
                 </div>
