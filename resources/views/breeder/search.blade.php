@@ -130,7 +130,7 @@
                 </div>
             <div class="panel panel-success">               
                 <div class="panel-body">
-                      <table class='table table-bordered table-hover'>
+                    <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th>FOTO</th>
@@ -148,15 +148,15 @@
                         <tbody>
                             @if(count($query)<=0)
                             <tr>
-                                <td colspan="8">No hay resultados</td>
+                                <td colspan="8">No existen ejemplares con ese nombre o raza</td>
                             </tr>
                             @else
                             @foreach ($query as $dog)
                             <tr>
-                                <td><img src="/assets/{{$dog->photo}}" width="150px"/></td>
+                                <td><img src="/assets/dogs/{{$dog->photo}}" width="150px"/></td>
                                 <td>{{ $dog->name}}</td>
                                 <td>{{ $dog->breed}}</td>
-                                <td>{{ $dog->date_of_birth}}</td>
+                                <td>{{ $dog->date_of_birth->format('d-m-Y')}}</td>
                                 <td>{{ $dog->sex}}</td>
                                 <td>{{ $dog->height.'cm'}}</td>
                                 <td>{{ $dog->weight.'kg'}}</td>
@@ -165,16 +165,12 @@
                             </tr>
                             @endforeach
                             @endif
-                            
                         </tbody>
-                     
-
                             </table>
-
+                            <div style="display:inline-block">
+                                {{$query->appends((request()->input()))->links()}}
+                            </div>
                 </div>
-                <span class="pagination justify-content-center">
-                    {{$query->links()}}
-                </span>
             </div>
             </section>
         </div>

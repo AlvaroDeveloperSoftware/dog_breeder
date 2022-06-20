@@ -217,19 +217,19 @@
                     <div class="slide-inner">
                         <input class="slide-open" type="radio" id="slide-1" 
                               name="slide" aria-hidden="true" hidden="" checked="checked">
-                        <div class="slide-item">
-                            <img src="/assets/concurso.jpg" style="display: block;margin: auto;">
-                        </div>
-                        <input class="slide-open" type="radio" id="slide-2" 
-                              name="slide" aria-hidden="true" hidden="">
-                        <div class="slide-item">
-                            <img src="/assets/mejorGrupo.jpg" style="display: block;margin: auto;">
-                        </div>
-                        <input class="slide-open" type="radio" id="slide-3" 
-                              name="slide" aria-hidden="true" hidden="">
-                        <div class="slide-item">
-                            <img src="/assets/mejorgrupo1.jpg" style="display: block;margin: auto;">
-                        </div>
+                              <div class="slide-item">
+                                <img src="/assets/belleza.jpeg" style="display: block;margin: auto;position: relative;bottom: 150px">
+                            </div>
+                            <input class="slide-open" type="radio" id="slide-2" 
+                                  name="slide" aria-hidden="true" hidden="">
+                            <div class="slide-item">
+                                <img src="/assets/concurso.jpg" width="100%" style="display: block;margin: auto;">
+                            </div>
+                            <input class="slide-open" type="radio" id="slide-3" 
+                                  name="slide" aria-hidden="true" hidden="">
+                            <div class="slide-item">
+                                <img src="/assets/mejorgrupo1.jpg" width="100%" style="display: block;margin: auto;">
+                            </div>
                         <label for="slide-3" class="slide-control prev control-1"><</label>
                         <label for="slide-2" class="slide-control next control-1">></label>
                         <label for="slide-1" class="slide-control prev control-2"><</label>

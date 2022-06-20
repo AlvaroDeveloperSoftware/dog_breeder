@@ -112,7 +112,6 @@
                     <form action="{{route('modify')}}" method="get">
                 </div>
             <div class="panel panel-success">
-                <div style="margin-bottom: 20px" class="panel-heading">Resultado de la busqueda</div>
                 <div class="panel-body">
                     <div class='table-responsive'>
                       <table class='table table-bordered table-hover'>
@@ -141,9 +140,8 @@
                                 <td><a href="{{route('modify.view')}}" class="btn btn-warning btn-sm">Editar</a>
                                 <button href="{{route('delete.dog')}}" type="submit" class="btn btn-danger btn-sm" value="Eliminar">Eliminar</button></td>
                                 <td>{{ $dogs->name}}</td>
-                                <td>{{ $dogs->name}}</td>
                                 <td>{{ $dogs->breed}}</td>
-                                <td>{{ $dogs->date_of_birth}}</td>
+                                <td>{{ $dogs->date_of_birth->format('d-m-Y')}}</td>
                                 <td>{{ $dogs->sex}}</td>
                                 <td>{{ $dogs->height.'cm'}}</td>
                                 <td>{{ $dogs->weight.'kg'}}</td>

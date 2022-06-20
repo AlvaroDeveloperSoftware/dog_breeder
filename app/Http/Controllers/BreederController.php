@@ -78,21 +78,19 @@ class BreederController extends Controller
      */
     public function searchView(Request $request)
     {
-        //Obtain all registers of dog table.
-        $dogs = Dog::all();
-
-
         //If the petition is true, obtain query for Dog, the query contains the request of necesary fields.
         if($request){
-            $filtro = trim($request->get('name', 'breed'));
+            $filterName = trim($request->input('name'));
+            $filterBreed = trim($request->input('breed'));
+
             $query = Dog::select('dog.name', 'dog.sex', 'dog.date_of_birth', 
             'dog.breed', 'dog.height', 'dog.weight', 'health_tests', 'owner',
-            'gallery.photo')->where('name', 'LIKE', '%' . $filtro. '%')
-             ->orWhere('breed', 'LIKE', '%' .$filtro . '%')->orderBy('name', 'asc')
+            'gallery.photo')->where('name', 'LIKE', '%' . $filterName. '%')
+             ->where('breed', 'LIKE', '%' . $filterBreed . '%')->orderBy('name', 'asc')
             ->join('gallery', 'dog.id', '=', 'gallery.id_dog')
             ->paginate(2);
 
-            return view('breeder.search', compact('query'));
+            return view('breeder.search', compact('query', 'filterName', 'filterBreed'));
 
         }
     }

@@ -7,149 +7,31 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Home</title>
+    <title>Búsqueda de ejemplares</title>
 
     <link rel="icon" href="{{ url('assets/logoDogBreeder.PNG') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script><script src="assets/js/script.min.js?h=2b73f98f110c7c604b36df54dc174798"></script>
 
+    <style>
+        .w-5{
+            display: none;
+            justify-content: center;
+        }
+        </style>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <style>
-        .slide {
-            position: relative;
-            box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
-            margin-top: auto;
-        }
-
-        .slide-inner {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: calc( 700px + 3em);
-        }
-
-        .slide-open:checked + .slide-item {
-            position: static;
-            opacity: 100;
-        }
-
-        .slide-item {
-            position: absolute;
-            opacity: 0;
-            -webkit-transition: opacity 0.6s ease-out;
-            transition: opacity 0.6s ease-out;
-        }
-
-        .slide-item img {
-            display: block;
-            height: auto;
-            max-width: 100%;
-        }
-
-        .slide-control {
-            background: rgba(0, 0, 0, 0.28);
-            border-radius: 50%;
-            color: #fff;
-            cursor: pointer;
-            display: none;
-            font-size: 40px;
-            height: 40px;
-            line-height: 35px;
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translate(0, -50%);
-            cursor: pointer;
-            -ms-transform: translate(0, -50%);
-            transform: translate(0, -50%);
-            text-align: center;
-            width: 40px;
-            z-index: 10;
-        }
-
-        .slide-control.prev {
-            left: 2%;
-        }
-
-        .slide-control.next {
-            right: 2%;
-        }
-
-        .slide-control:hover {
-            background: rgba(0, 0, 0, 0.8);
-            color: #aaaaaa;
-        }
-
-        #slide-1:checked ~ .control-1,
-        #slide-2:checked ~ .control-2,
-        #slide-3:checked ~ .control-3 {
-            display: block;
-        }
-
-        .slide-indicador {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            bottom: 2%;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 10;
-        }
-
-        .slide-indicador li {
-            display: inline-block;
-            margin: 0 5px;
-        }
-
-        .slide-circulo {
-            color: #828282;
-            cursor: pointer;
-            display: block;
-            font-size: 35px;
-        }
-
-        .slide-circulo:hover {
-            color: #aaaaaa;
-        }
-
-        #slide-1:checked ~ .control-1 ~ .slide-indicador 
-             li:nth-child(1) .slide-circulo,
-        #slide-2:checked ~ .control-2 ~ .slide-indicador 
-              li:nth-child(2) .slide-circulo,
-        #slide-3:checked ~ .control-3 ~ .slide-indicador 
-              li:nth-child(3) .slide-circulo {
-            color: #428bca;
-        }
-
-        #titulo {
-            width: 100%;
-            position: absolute;
-            padding: 0px;
-            margin: 0px auto;
-            text-align: center;
-            font-size: 27px;
-            color: rgba(255, 255, 255, 1);
-            font-family: 'Open Sans', sans-serif;
-            z-index: 9999;
-            text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), 
-                 -1px 0px 2px rgba(255, 255, 255, 0);
-        }
-    </style>
 </head>
         <body style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65));">
             <nav class="navbar navbar-dark navbar-expand-md bg-dark py-3">
                 <div class="container">
                     <nav class="navbar navbar-light navbar-expand-md">
-                        <img src="/assets/logoDogBreeder.png" style="width: 150px; height:100px;margin-right: 50px"/>
+                        <img class="img-responsive" src="/assets/logoDogBreeder.png" style="width: 150px; height:100px;margin-right: 50px"/>
                         <div class="container-fluid">
                             <button data-bs-toggle="collapse" data-bs-target="#navcol-6" class="navbar-toggler">
                                 <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
@@ -169,14 +51,15 @@
                                     <li class="nav-item">
                                         <ul class="navbar-nav">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="#">INICIO</a>
+                                                <a class="nav-link" href="{{route('user.home')}}">INICIO</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('user.config')}}">CONFIGURACION</a>
                                             </li>
+                                        </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('user.search')}}">BUSQUEDA DE EJEMPLARES</a>
+                                        <a class="nav-link active" href="{{route('user.search')}}">BUSQUEDA DE EJEMPLARES</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('user.culture')}}">CULTURA</a>
@@ -188,7 +71,6 @@
                             </div>
                         </div>
                     </nav>
-        
                     <div class="collapse navbar-collapse flex-grow-0 order-md-first" id="navcol-6">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item"></li>
@@ -198,6 +80,7 @@
                         </ul>
                         <div class="d-md-none my-2">
                             <div class="d-md-none my-2">
+                                <a class="btn btn-primary" href="{{route('user.home')}}" style="color: black">HOME</a>
                                 <a class="btn btn-primary" href="{{route('user.config')}}" style="color: black">CONFIGURACION</a>
                                 <a class="btn btn-primary" href="{{route('user.search')}}" style="color: black">BUSQUEDA DE EJEMPLARES</a>
                                 <a class="btn btn-primary" href="{{route('user.culture')}}" style="color: black">CULTURA</a>
@@ -208,81 +91,92 @@
                     <div class="d-none d-md-block"></div>
                 </div>
             </nav>
-            <section>
-                <div class="slide">
-                    <div class="slide-inner">
-                        <input class="slide-open" type="radio" id="slide-1" 
-                              name="slide" aria-hidden="true" hidden="" checked="checked">
-                        <div class="slide-item">
-                            <img src="/assets/belleza.jpeg" style="display: block;margin: auto;position: relative;bottom: 150px">
-                        </div>
-                        <input class="slide-open" type="radio" id="slide-2" 
-                              name="slide" aria-hidden="true" hidden="">
-                        <div class="slide-item">
-                            <img src="/assets/concurso.jpg" width="100%" style="display: block;margin: auto;">
-                        </div>
-                        <input class="slide-open" type="radio" id="slide-3" 
-                              name="slide" aria-hidden="true" hidden="">
-                        <div class="slide-item">
-                            <img src="/assets/mejorgrupo1.jpg" width="100%" style="display: block;margin: auto;">
-                        </div>
-                        <label for="slide-3" class="slide-control prev control-1">‹</label>
-                        <label for="slide-2" class="slide-control next control-1">›</label>
-                        <label for="slide-1" class="slide-control prev control-2">‹</label>
-                        <label for="slide-3" class="slide-control next control-2">›</label>
-                        <label for="slide-2" class="slide-control prev control-3">‹</label>
-                        <label for="slide-1" class="slide-control next control-3">›</label>
-                        <ol class="slide-indicador">
-                            <li>
-                                <label for="slide-1" class="slide-circulo">•</label>
-                            </li>
-                            <li>
-                                <label for="slide-2" class="slide-circulo">•</label>
-                            </li>
-                            <li>
-                                <label for="slide-3" class="slide-circulo">•</label>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="container h-100 position-relative" style="top: 100px;margin-bottom:150px">
-                    <div class="row gy-5 gy-lg-0 row-cols-1 row-cols-md-2 row-cols-lg-2">
-                        <div class="col">
-                            <div class="card" style="border: 2px solid black;">
-                                <div class="card-body pt-5 p-4">
-                                    <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center position-absolute mb-3 bs-icon lg" style="top: -30px;">
-                        </div>
-                        <h4 class="card-title text-center">Configuración</h4>
-                        <p class="card-text text-center">Personaliza tus datos introducidos.</p>
-                        </div>
-                        <div class="card-footer p-4 py-3">
-                            <a href="{{route('config')}}" style="color: black">Ir a Configuración</a>
-                    </div>
-                </div>
-            </div>
-<div class="col">
-    <div class="card" style="border: 2px solid black;">
-        <div class="card-body pt-5 p-4">
-            <div class="bs-icon-lg bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center position-absolute mb-3 bs-icon lg" style="top: -30px;">
-</div>
-<h4 class="card-title text-center">Búsqueda de ejemplares</h4>
-<h6 class="text-muted card-subtitle mb-2"></h6>
-<p class="card-text text-center">Busca los ejemplares de los demás criadores.</p>
-</div>
-<div class="card-footer p-4 py-3"><a href="{{route('search')}}" style="color: black">Ir Buscar ejemplares</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="page-section clearfix">
-    <div class="container">
-        <div class="intro">
+    <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3"></span><span class="site-heading-lower"></span></h1>
+    <section>
+        <div class="simple-slider">
+            <div class="swiper-container">
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
+        <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+                
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <img src="/assets/buscar.png" style="width:100px;height:75px";/>
+                    <h2>BÚSQUEDA DE EJEMPLARES</h2>
+                    <p>Busca los ejemplares que quiera, si no los encuentra comuniquese con el desarrollador para que los introduzca en el sistema. </p>
+                </div>
+            </div>
+            <section style="text-align: center;">
+                <div class="container">
+                    <form action="{{route('user.search')}}" method="get">
+                    <div class="row d-flex justify-content-center" style="margin: 0px;">
+                        <div class="col">
+                            <input name="name" placeholder="Buscar por nombre" type="search" style="margin-left: 14px;" />
+                            <input name="breed" placeholder="Buscar por raza" type="search" />
+                            <input type="submit" style="margin-top: 14px;margin-bottom: 14px;" value="BUSCAR">
+                    <input type="submit" style="margin-top: 14px;margin-bottom: 14px;" value="MOSTRAR TODOS">
+                        </div>
+                </form>
+                </div>
+            <div class="panel panel-success">               
+                <div class="panel-body">
+                      <table class="table table-bordered table-dark" style="border-color: 4px solid black;border-radius: 20px">
+                        <thead>
+                          <tr>
+                            <th scope="col">FOTO</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">RAZA</th>
+                            <th scope="col">FECHA DE NACIMIENTO</th>
+                            <th scope="col">SEXO</th>
+                            <th scope="col">PESO</th>
+                            <th scope="col">ALTURA</th>
+                            <th scope="col">PRUEBAS DE SALUD</th>
+                            <th scope="col">PROPIETARIO</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            @if(count($query)<=0)
+                            <tr>
+                                <td colspan="8">No existen ejemplares con ese nombre o raza</td>
+                            </tr>
+                            @else
+                            @foreach ($query as $dog)
+                            <tr>
+                                <td><img src="/assets/dogs/{{$dog->photo}}" width="150px"/></td>
+                                <td>{{ $dog->name}}</td>
+                                <td>{{ $dog->breed}}</td>
+                                <td>{{ $dog->date_of_birth->format('d-m-Y')}}</td>
+                                <td>{{ $dog->sex}}</td>
+                                <td>{{ $dog->height.'cm'}}</td>
+                                <td>{{ $dog->weight.'kg'}}</td>
+                                <td>{{ $dog->health_tests}}</td>
+                                <td>{{ $dog->owner}}</td>
+                            </tr>
+                            @endforeach
+                            @endif
+                        </tbody>
+                            </table>
+                            <div style="display:inline-block">
+                                {{$query->appends((request()->input()))->links()}}
+                            </div>
+                </div>
+                
+            </div>
+            </section>
+        </div>
     </section>
-    <footer class="text-center bg-dark" style="color: white">
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro"></div>
+        </div>
+    </section>
+</body>
+    <footer class="bg-dark" style="color: white;text-align: center">
         <div class="container text-white py-4 py-lg-5">
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a class="link-light">Álvaro Ramas Franco</a></li>
@@ -302,5 +196,4 @@
             <p>Copyright © DOG BREEDER 2022</p>
         </div>
     </footer>
-</body>
 </html>

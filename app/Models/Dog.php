@@ -15,7 +15,7 @@ class Dog extends Model
     use HasFactory;
 
     protected $table = 'dog';
-
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -52,6 +52,10 @@ class Dog extends Model
         'created_at',
         'updated_at',
     ];
+
+    protected $casts = [
+        'date_of_birth' => 'date',
+     ];
 
     /**
      * Function for obtain id of Dog.

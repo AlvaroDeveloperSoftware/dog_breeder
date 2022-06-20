@@ -82,17 +82,17 @@
                     <div class="d-none d-md-block"></div>
                 </div>
             </nav>
-            <h1 style="text-align: center;margin-top: 10px">Tus datos {{Auth::user()->name}} {{Auth::user()->surnames}}</h1>
+            <h1 style="text-align: center;margin-top: 10px">Tus datos {{Auth::user()->name}}</h1>
             </div>
             <div class="panel-body">
             <table class="table table-bordered table-hover">
                 <tr>
                     <th>EMAIL</th>
-                    <th>TELEFONO</th>
+                    <th>NOMBRE</th>
                 </tr>
                 <tr>
                     <td>{{Auth::user()->email}}</td>
-                    <td>{{Auth::user()->phone}}</td>
+                    <td>{{Auth::user()->name}}</td>
                 </tr>
             </table>
             <div style="margin-bottom: 300px">

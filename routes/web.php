@@ -32,7 +32,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['user_normal']], function(){
     Route::get('/home', '\App\Http\Controllers\UserController@index')->name('user.home');   
     Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     Route::get('/culture', '\App\Http\Controllers\UserController@userculture')->name('user.culture');
-    Route::get('/search', '\App\Http\Controllers\UserController@searchView')->name('user.search');
+    Route::get('/search', '\App\Http\Controllers\UserController@search')->name('user.search');
     Route::get('/config', '\App\Http\Controllers\UserController@config')->name('user.config');
 
     
