@@ -5,6 +5,9 @@ use App\Http\Controllers\RegBreederController;
 use App\Http\Controllers\BreederController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KennelController;
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RegisterAdminController;
 
 /**
  * File of routes.
@@ -50,10 +53,21 @@ Route::group(['prefix' => 'breeder', 'middleware' => ['users']], function() {
     Route::post('/farm/create', '\App\Http\Controllers\KennelController@registerDog')->name('create.dog');
     Route::get('/culture', '\App\Http\Controllers\BreederController@culture')->name('culture');
     Route::get('/config', '\App\Http\Controllers\BreederController@config')->name('config');
-    
+
     Route::get('/farm/update', '\App\Http\Controllers\KennelController@show')->name('modify.view');
     Route::put('/farm/update/editForm', '\App\Http\Controllers\KennelController@update')->name('modify');
     Route::get('/search', '\App\Http\Controllers\BreederController@searchView')->name('search');
     Route::delete('/farm/delete', '\App\Http\Controllers\KennelController@destroy')->name('delete.dog');
-
     });
+
+
+//Route admin
+ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function() {
+     Route::get('/registerAdmin/view', '\App\Http\Controllers\RegisterAdminController@registerView')->name('admin.register.view');
+     Route::post('/registerAdmin', '\App\Http\Controllers\RegisterAdminController@create')->name('admin.register');
+     Route::get('/login', '\App\Http\Controllers\AdminLoginController@showLoginForm')->name('admin.login.view');
+     Route::get('/home', '\App\Http\Controllers\AdminController@index')->name('admin.home');
+     Route::post('/login', '\App\Http\Controllers\AdminLoginController@login')->name('admin.login');
+     Route::get('/logout', '\App\Http\Controllers\AdminLoginController@logout')->name('admin.logout');
+     Route::get('/listusers', '\App\Http\Controllers\AdminController@allUser')->name('admin.list');
+     });

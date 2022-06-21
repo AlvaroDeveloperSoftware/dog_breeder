@@ -36,6 +36,12 @@ class RedirectIfAuthenticated
                     return redirect()->route('user.home');
                 }
                 break;
+
+            case 'admin':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('admin.home');
+                }
+                break;
         }
 
         return $next($request);

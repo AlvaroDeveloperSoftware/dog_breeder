@@ -37,17 +37,17 @@ class Handler extends ExceptionHandler
 
        switch ($guard) {
          case 'admin':
-           $login='admin.login';
-           break;
+            $login='admin.login.view';
+            break;
         case 'users':
             $login='login';
             break;
         case 'user':
             $login='login';
             break;
-         default:
-           $login='login';
-           break;
+        default:
+            $login='login';
+            break;
        }
 
         return redirect()->route($login);

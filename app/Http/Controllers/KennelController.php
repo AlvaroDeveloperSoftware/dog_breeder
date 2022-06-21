@@ -82,10 +82,6 @@ class KennelController extends Controller
 
             $gallery->save();
 
-            //For relationship M:N, the method of save fk in the table is with the method attach and before
-            //user_normal for relationship definitive.
-            $dogs->user_normal()->attach($dogs->id);
-
             //Redirect to route of breeder.home.
             return redirect()->route('breeder.home');
     }

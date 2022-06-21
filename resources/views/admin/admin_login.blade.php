@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Login</title>
+    <title>Admin Login</title>
 
     <link rel="icon" href="{{ url('assets/logoDogBreeder.PNG') }}">
 
@@ -24,14 +24,14 @@
 <body style="background-color: #d0bbbb">
    
 <div class="container">
-    <h1 class="text-center" style="margin-top: 11px;color: #4f4f4f;">Iniciar Sesión</h1>
+    <h1 class="text-center" style="margin-top: 11px;color: #4f4f4f;">Iniciar Sesión como Administrador</h1>
     <section class="position-relative py-4 py-xl-5">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-xl-4">
                     <div class="card mb-5">
                         <div class="card-body shadow-lg d-flex flex-column align-items-center" style="color: var(--bs-blue);background: #ad8f92;">
-                            <form class="text-center" method="POST" action="{{ route('login') }}">
+                            <form class="text-center" method="POST" action="{{ route('admin.login') }}">
                                 @csrf
                                 <div class="mb-3"></div>
                                 <label class="form-label" style="color: rgb(0,0,0);">EMAIL</label>
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <label class="form-label" style="text-align: center;color: rgb(0,0,0);">¿No tienes cuenta?</label>
-                            <a href="{{route('register')}}" class="btn btn-primary" type="button" style="background: #91686d;border-style: none;color: #65120d;text-align: center;font-size: 18px;">Registrate</a>
+                            <a href="{{route('admin.register.view')}}" class="btn btn-primary" type="button" style="background: #91686d;border-style: none;color: #65120d;text-align: center;font-size: 18px;">Registrate</a>
                         </div>
                     </div>
                 </div>

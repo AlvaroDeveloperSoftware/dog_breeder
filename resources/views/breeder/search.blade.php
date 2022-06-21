@@ -130,7 +130,7 @@
                 </div>
             <div class="panel panel-success">               
                 <div class="panel-body">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-dark" style="border-color: 4px solid black;border-radius: 20px">
                         <thead>
                           <tr>
                             <th>FOTO</th>
