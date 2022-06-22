@@ -59,7 +59,7 @@ class RegBreederController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'surnames' => ['string', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'max:20', 'confirmed'],
             'breed' => ['required', 'string', 'max:255'],
             'years_breed' => ['integer'],
             'photo' => ['required', 'string', 'max:255'],

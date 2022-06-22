@@ -142,7 +142,7 @@
                         <tbody>
                             @if(count($query)<=0)
                             <tr>
-                                <td colspan="8">No existen ejemplares con ese nombre o raza</td>
+                                <td colspan="9">No existen ejemplares con ese nombre o raza</td>
                             </tr>
                             @else
                             @foreach ($query as $dog)
